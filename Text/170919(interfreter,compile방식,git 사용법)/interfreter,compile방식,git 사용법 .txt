@@ -1,0 +1,30 @@
+﻿*Interfreter
+ - node  >node 파일명)
+Platform 비종속
+모든 운영체제에서 사용가능
+실행시 플랫폼을 거치기때문에 속도가 느림
+ - Java 
+Java 구동원리
+Write once, run anywhere
+.class 기계어와 흡사한 중간코드 (1byte 동작코드+0개 이상의 값=명령어)=bytecode JVM=java.exe .class 파일을 실행하는 VM
+interfreter 방식보단 빠름, 인터프리터와 컴파일 방식이 섞여있음
+
+
+*compile
+Unix, Linux, MacOS compiler 기본탑재
+MacOS의 기본문자형식 UTF-8
+ - cygwin  >gcc 파일명
+cygwin 설치패키지 binutil cmake gcccore gccg++ make gdb 
+Platform 종속
+실행속도가 빠름, 실행파일인 실행파일(exe)만 공유하기때문에 소스파일을 보호 할 수 있다.
+
+
+commit push pull
+
+git add . 로컬저장소에 백업할 명단 작성 . 은 All을 뜻함 
+git commit -m '백업이유' 로컬저장소에 백업
+esc -> a insert 
+w저장q종료 wq
+git push 서버의 원격저장소에 업로드
+git clone "주소" 해당주소의 모든것을 pull
+

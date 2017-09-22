@@ -1,0 +1,11 @@
+﻿*build 도구
+ 컴파일, 배포파일 생성 테스트 문서생성등 개발 전과정을 말하는 용어
+ 1.ant
+  -build.xml 설정파일에 빌드 작업을 기술
+ 2.Maven
+  -porn.xml
+ 3.Gradle
+  -build.gradle
+  복잡한 빌드 작업을 기술하기위한 빌드 설정 파일을 작성할때 xml이 아닌
+  groovy언어 사용
+
