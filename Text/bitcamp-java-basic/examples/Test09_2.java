@@ -26,7 +26,7 @@ public class Test09_2 {
  *     > java -cp ./build/classes/java/main a.Test09_2
  *  3) CLASSPATH 등록 후 실행하기
  *     (Windows)
- *     > set CLASSPATH=build\classes\java\main
+ *     > set CLASSPATH=.\build\classes\java\main
  *     > java a.Test09_2
  *     
  *     (linux & unix)
