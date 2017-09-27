@@ -28,7 +28,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'App'
+
 
 compileJava {
     options.encoding = 'UTF-8'
@@ -36,3 +36,5 @@ compileJava {
 javadoc {
     options.encoding = "UTF-8"
 }
+
+mainClassName = 'App'
