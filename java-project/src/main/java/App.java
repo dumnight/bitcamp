@@ -36,7 +36,7 @@ public class App {
 }
 */
 
-// ver 0.3
+/* ver 0.3
 public class App {
     public static void main(String[] args){
     
@@ -59,3 +59,50 @@ public class App {
 
 
 }
+*/
+/* ver 0.4
+
+public class App {
+    public static void main(String[] args){
+        String[] names = {"양고기", "닭고기", "소고기"};
+        int[] kor = {100, 120, 120};
+        int[] eng = {120, 80, 90};
+        int[] math = {140, 20, 90};
+        
+        for(int i=0; i<3; i++){
+            int sum = kor + eng + math
+            float aver = sum / 3.0f;
+            System.out.printf("%-4s, %4d, %4d, %4d, %4d, %6.1f\n", names[i],kor[i],eng[i],math[i],sum,aver);
+        }
+    }
+}
+
+*/
+public class App {
+    public static void main(String[] args){
+        
+        class Score{
+            String names;
+            int kor, eng, math, sum;
+            float aver;
+        }
+
+        Score r1;
+        r1 = new Score();
+       
+        r1.names = "홍길동";
+        r1.kor = 100;
+        r1.eng = 98;
+        r1.math = 96;
+        r1.sum = r1.kor + r1.eng + r1.math;
+        r1.aver = r1.sum / 3.0f;
+
+        System.out.printf("%s %d %d %d %d %f\n", r1.names, r1.kor, r1.eng,
+        r1.math, r1.sum, r1.aver);
+
+
+    }
+}
+
+
+    
