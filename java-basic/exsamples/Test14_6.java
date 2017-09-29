@@ -1,7 +1,7 @@
 package bitcamp.java100;
 
     public class Test14_6{
-        public static void main(String args[]){
+        public static void main(String[] args){
             // 사용자 정의 데이터 타입
             class Score {
                 String names;

@@ -12,6 +12,7 @@ public class Test99 {
           if (i == 6)
             continue; // 다음에 나오는 문장들을 실행하지 않고 바로 비교문으로 보낸다.
           r += i;
+          System.out.printf("i = %d, r = %d\n", i, r);
         }
         
         System.out.printf("i = %d, r = %d\n", i, r);
