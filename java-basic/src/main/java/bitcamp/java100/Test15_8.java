@@ -28,6 +28,10 @@ package bitcamp.java100;
             boolean b1 = false;
             boolean result = false && (b1 = true);
             System.out.printf("b1=%b, result=%b\n", b1, result);
+
+            b1 = false;
+            result = false & (b1 = true);
+            System.out.printf("b1=%bh");
         }
     }                                                                                   
     

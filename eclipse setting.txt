@@ -1,0 +1,14 @@
+10/10
+https://github.com/eomcs/eomcs-codebook
+nmp install
+--add-modules=java.se.ee
+--add-modules=ALL-SYSTEM
+
+general - editor - Text Editors - insert spaces for tab,show print margin, 
+show whitespace charaters (check)
+
+Java - Code Style - Formatter - new(My) - Spaces only
+
+Java - installed JREs - Add - jdk1.8.0(check)
+
+Web - Encoding ISO/10646/Unicode(UTF-8)
