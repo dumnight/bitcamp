@@ -15,7 +15,7 @@ package bitcamp.java100;
             ++a; // a = a + 1
             --b; // b = b + 1
             
-            System.out.printf("a=%d, b=%d\n", a, b);
+            System.out.printf("a=%d, b=%d\n", a, b);    
             // 변수의 값을 먼저 놓은뒤 증가
             a = 10;
             b = 10;

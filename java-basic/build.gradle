@@ -28,7 +28,42 @@ dependencies {
 }
 
 // Define the main class for the application
+apply plugin : 'java'
+apply plugin : 'application'
+apply plugin : 'eclipse'
 
+eclipse {
+  jdt {
+    //if you want to alter the java versions (by default they are configured with gradle java plugin settings):
+    sourceCompatibility = 9
+    targetCompatibility = 9
+    javaRuntimeName = "JavaSE-9"
+
+    file {
+      //whenMerged closure is the highest voodoo
+      //and probably should be used only to solve tricky edge cases.
+      //the type passed to the closure is Jdt
+
+      //closure executed after jdt file content is loaded from existing file
+      //and after gradle build information is merged
+      whenMerged { jdt
+        //you can tinker with the Jdt here
+        
+      }
+
+      //withProperties allows addition of properties not currently
+      //modeled by Gradle
+      withProperties { properties ->
+      properties["org.eclipse.jdt.core.compiler.codegen.targetPlatform"] = "9"
+      properties["org.eclipse.jdt.core.compiler.source"] = "9"
+      properties["org.eclipse.jdt.core.compiler.compliance"] = "9"
+      
+        
+          //you can tinker with the Properties here
+      }
+    }
+  }
+}
 
 compileJava {
     options.encoding = 'UTF-8'
