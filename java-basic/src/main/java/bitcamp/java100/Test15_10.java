@@ -10,8 +10,4 @@ package bitcamp.java100;
             System.out.println(java.lang.Integer.toBinaryString(result));
             
         }
-    }                                                                                   
-    
-    
- 
-                          
+    }

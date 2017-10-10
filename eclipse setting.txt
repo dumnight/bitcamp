@@ -14,3 +14,59 @@ Java - installed JREs - Add - jdk1.8.0(check)
 Web - Encoding ISO/10646/Unicode(UTF-8)
 
 Menu - help - Eclipse Marketplace - Java9 support for Oxygen 4.7
+
+Java-basic .project , .classpath DELETE
+
+cmd = gradlew eclipse(이클립스 관련 설정파일을 생성)
+.settings - org.eclipse.jdt.core.prefs / .classpath 에서 Java1.9를 9로 변경
+
+*Project forder
+build.gradle
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin : 'eclipse'
+
+eclipse {
+  jdt {
+    sourceCompatibility = 9
+    targetCompatibility = 9
+    javaRuntimeName = "JavaSE-9"
+
+    file {
+      whenMerged { jdt
+        
+      }
+
+      withProperties { properties ->
+      properties["org.eclipse.jdt.core.compiler.codegen.targetPlatform"] = "9"
+      properties["org.eclipse.jdt.core.compiler.source"] = "9"
+      properties["org.eclipse.jdt.core.compiler.compliance"] = "9"
+      
+        
+      }
+    }
+  }
+}
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:22.0'
+
+    testCompile 'junit:junit:4.12'
+}
+compileJava {
+    options.encoding = 'UTF-8'
+}
+javadoc {
+    options.encoding = "UTF-8"
+}
+
+mainClassName = 'App'
+
+
+gradle init --type java-application
+gradlew eclipse
