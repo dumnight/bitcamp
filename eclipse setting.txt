@@ -12,3 +12,5 @@ Java - Code Style - Formatter - new(My) - Spaces only
 Java - installed JREs - Add - jdk1.8.0(check)
 
 Web - Encoding ISO/10646/Unicode(UTF-8)
+
+Menu - help - Eclipse Marketplace - Java9 support for Oxygen 4.7
