@@ -44,8 +44,8 @@ package bitcamp.java100;
             
             for(int i =0; i < scores.length; i++) {
                 
-                //System.out.printf("%s %d %d %d %d %f\n", scores[i].names, scores[i].kor, scores[i].eng, 
-                  //      scores[i].math, scores[i].sum, scores[i].aver);
+                System.out.printf("%s %d %d %d %d %f\n", scores[i].names, scores[i].kor, scores[i].eng, 
+                        scores[i].math, scores[i].sum, scores[i].aver);
             }
              
         }

@@ -5,43 +5,34 @@ package bitcamp.java100;
         public static void main(String[] args){
             //파일의 정보를 저장하라
             //디렉토리 여부, 소유주/그룹/기타 사용자의 읽기, 쓰기, 실행 권한 정보
-            //방법1 : 클래스를 이용하여 처리
+            //방법1 : 배열을 이용하여 처리
             //메모리 설계
-            class Privilege {
-                boolean isDirectory;
-                boolean ownerRead;
-                boolean ownerWrite;
-                boolean ownerExe;
-                boolean groupRead;
-                boolean groupWrite;
-                boolean groupExe;
-                boolean otherRead;
-                boolean otherWrite;
-                boolean otherExe;
-            }
-            // Privilege 설계에 따라 메모리를 준비하고 그 메모리에 주소를 저장
-            Privilege p1 = new Privilege();
             
-            p1.isDirectory = false;
-            p1.ownerRead = true;
-            p1.ownerWrite = true;
-            p1.groupRead = true;
-            p1.groupWrite = false;
-            p1.groupExe = true;
-            p1.otherRead = true;
-            p1.otherWrite = false;
-            p1.otherExe = true;
             
-            System.out.print(p1.isDirectory ? "d" : "-");
-            System.out.print(p1.ownerRead ? "r" : "-");
-            System.out.print(p1.ownerWrite ? "w" : "-");
-            System.out.print(p1.ownerExe ? "x" : "-");
-            System.out.print(p1.groupRead ? "r" : "-");
-            System.out.print(p1.groupWrite ? "w" : "-");
-            System.out.print(p1.groupExe ? "x" : "-");
-            System.out.print(p1.otherRead ? "r" : "-");
-            System.out.print(p1.otherWrite ? "w" : "-");
-            System.out.print(p1.otherExe ? "x" : "-");
+            //사용자 권한 정보를 담을 메모리를 여러 개 만든후 그 주소를 보관한다.
+            boolean[] arr = new boolean[10];
+            
+            //배열에 사용자 권한을 저장한다.
+            arr[0] = false;
+            arr[1] = true;
+            arr[2] = true;
+            arr[4] = true;
+            arr[5] = false;
+            arr[6] = true;
+            arr[7] = true;
+            arr[8] = false;
+            arr[9] = true;
+            
+            System.out.print(arr[0] ? "d" : "-");
+            System.out.print(arr[1] ? "r" : "-");
+            System.out.print(arr[2] ? "w" : "-");
+            System.out.print(arr[3] ? "x" : "-");
+            System.out.print(arr[4] ? "r" : "-");
+            System.out.print(arr[5] ? "w" : "-");
+            System.out.print(arr[6] ? "x" : "-");
+            System.out.print(arr[7] ? "r" : "-");
+            System.out.print(arr[8] ? "w" : "-");
+            System.out.print(arr[9] ? "x" : "-");
             System.out.println();
             
             

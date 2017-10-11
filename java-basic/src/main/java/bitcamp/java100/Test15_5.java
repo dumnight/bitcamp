@@ -7,7 +7,7 @@ package bitcamp.java100;
             int b = 10;
             a = a + 1;
             b = b - 1;
-            System.out.printf("a=%d, b=%d\n", a, b);
+            System.out.printf("a=%d, b=%d\n", a, b); 
 
             a = 10;
             b = 10;

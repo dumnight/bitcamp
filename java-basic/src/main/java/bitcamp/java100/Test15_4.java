@@ -5,7 +5,7 @@ package bitcamp.java100;
         public static void main(String[] args){
             float f1 = 3.141592f;
             int i1 = 7654321;
-            System.out.printf("f1-%f, i1=%d\n", f1, i1);  
+            System.out.printf("f1-%f, i1=%d\n", f1, i1);   
             // 암시적 형변환
             double r1 = f1 + i1;
             System.out.println(r1);
