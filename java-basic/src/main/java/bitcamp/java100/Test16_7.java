@@ -3,7 +3,7 @@ package bitcamp.java100;
 
     public class Test16_7 {
         public static void main(String[] args) {
-            
+           
             String[] names = {"홍길동", "임꺽정", "유관순", "안중근", "윤봉길"};
             
             for(String n : names)
