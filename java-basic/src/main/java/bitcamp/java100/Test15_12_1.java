@@ -16,7 +16,7 @@ package bitcamp.java100;
             System.out.println(v >> 1); // v / 2**1
             System.out.println(v >> 2); // v / 2**2
             System.out.println(v >> 3); 
-            System.out.println(v >> 4);
+            System.out.println(v >> 4); 
             
             //### >>>
             //오른쪽으로 비트를 이동시킨다.
