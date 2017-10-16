@@ -17,7 +17,7 @@ package bitcamp.java100;
         // 메서드에서 호출자의 메모리 값을 변경할 수 있다.
         static void swap2(int[] r) {
             int temp = r[0];
-            r[0] = r[1];
+            r[0] = r[1]; 
             r[1] = temp;
             System.out.printf("swap2(): r[0] = %d, r[1] = %d\n", r[0], r[1]);
         }

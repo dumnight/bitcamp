@@ -18,11 +18,11 @@ package bitcamp.java100;
         // new 연산자를 통해 만든 배열은 heap영역에 존재하기 떄문에 메서드 호출이 끝나더라도 유지된다
         
         static int[] m2() {
-            int[] arr = new int[3]; // new 로 생성된 값은 heap에 저장됨
+            int[] arr = new int[3]; // new 로 생성된 값은 heap에 저장됨 
             arr[0] = 100;
             arr[1] = 200;
             arr[2] = 300;
-            return arr; // 배열의 주소를 리턴한다
+            return arr; // 배열의 주소를 리턴한다 
             // 이떄 arr은 로컬 변수이기 떄문에 호출이 끝나면 제거된다
             
         }

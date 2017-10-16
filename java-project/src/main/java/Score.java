@@ -12,26 +12,25 @@ public class Score {
             float aver;
             //### 메서드 분류
             //Score 메모리의 값을 다루는 메서드는 Score 클래스에 두는 것이 더 유지보수에 도움이 된다
-            static void compute(Score s) {
-                for(int sub : s.subjects) {
-                    s.sum += sub;
+            static void compute(Score score) {
+                for(int sub : score.subjects) {
+                    score.sum += sub;
                 }
-                s.aver = s.sum / 3f;
+                score.aver = score.sum / 3f;
             }
-            static void init(Score score, String name, int kor, int eng, int math) {
-                score.name = name;
-                score.subjects[0] = kor;
-                score.subjects[1] = eng;
-                score.subjects[2] = math;
-                
-                compute(score);
-            }
-            
-            
             static void print(Score score) {
                 System.out.printf("%-4s, %4d, %4d, %4d, %4d, %6.1f\n", 
-                score.name, score.subjects[0], score.subjects[1], score.subjects[2], score.sum, score.aver);
+                        score.name, score.subjects[0], score.subjects[1], score.subjects[2], score.sum, score.aver);
             }
+           static void init(Score score, String name, int kor, int eng, int math) {
+               score.name = name;
+               score.subjects[0] = kor;
+               score.subjects[1] = eng;
+               score.subjects[2] = math;
+               
+               compute(score);
+           }
+
     }
 
 /* 

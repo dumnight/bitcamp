@@ -55,19 +55,17 @@ public class App {
 
 public class App{
     
-   
+    
     public static void main(String[] args) { 
-            // Score 설계또에 따라 메모리를 준비한다.
+            //학생의 성적을 저장할 메모리를 준비한다.
+            
             Score[] scores = {new Score(), new Score(), new Score()};
-
-            // Score 클래스에 따로 분류된 메서드를 호출한다
-            // Score 클래스는 현재 App클래스와 같은 패키지에 있기 때문에 전체 패키지명을 적을 필요가 없다
-            Score.init(scores[0], "홍길동", 200, 500, 423);
-            Score.init(scores[1], "홍길동", 200, 500, 423);
-            Score.init(scores[2], "홍길동", 200, 500, 423);
+                Score.init(scores[0], "홍길동", 100, 29, 43);
+                Score.init(scores[1], "길동", 100, 29, 43);
+                Score.init(scores[2], "동", 100, 29, 43);
 
                         
-                for(Score s : scores) {
+                for( Score s : scores) {
                     Score.print(s);
                 }
     }
