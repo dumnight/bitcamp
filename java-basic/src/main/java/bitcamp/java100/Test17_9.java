@@ -45,10 +45,6 @@ package bitcamp.java100;
                 // 2의 8승을 구해보자
                 int result = exp(2, 8);
                 System.out.println(result);
-                
-                
-            
-           
             
             
         }
