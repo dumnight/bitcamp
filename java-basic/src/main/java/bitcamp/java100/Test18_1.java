@@ -14,6 +14,11 @@ public class Test18_1 {
         
         // 내부적으로 'A','B','C','가','각','간'의 문자 코드 값을 저장하는 배열이 생성된다
         
+        String s2 = new String("ABC가각간");
+        
+        if(s1 != s2) // 인스턴스의 주소가 서로 다름
+            System.out.println("s1 != s2");
+        
         
         
         
