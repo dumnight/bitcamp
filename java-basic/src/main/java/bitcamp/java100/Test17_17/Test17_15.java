@@ -1,6 +1,6 @@
 // 메서드 - reference 리턴
 // 로컬 변수의 생명주기와 객체의 생명주기에 대해 알아보자
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_15 {
         // 로컬 변수의 생명주기

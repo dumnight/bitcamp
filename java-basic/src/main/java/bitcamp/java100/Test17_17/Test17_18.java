@@ -1,6 +1,6 @@
 //## 메서드 - 클래스 메서드와 인스턴스 메서드
 
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
 public class Test17_18 {
         

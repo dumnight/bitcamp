@@ -2,7 +2,7 @@
 // - 메서드의 용도와 간단한 사용 예를 알아보자!
 //
 
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
 public class Test17_1 {
 

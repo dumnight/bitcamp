@@ -1,6 +1,6 @@
 // 메서드 - 관련 메서드를 분류하기
 // 메서드를 관리하기 쉽도록 서로 연관된 것끼리 묶어 분류하는 방법
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_16 {
 

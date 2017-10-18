@@ -1,5 +1,5 @@
 //클래스 문법을 사용하여 메서드를 분류(calssification)한다.
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_16_a {
         

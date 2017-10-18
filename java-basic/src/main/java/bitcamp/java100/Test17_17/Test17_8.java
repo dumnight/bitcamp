@@ -1,5 +1,5 @@
 // 메서드 - 메서드 정의 문법
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_8 {
         

@@ -1,5 +1,5 @@
 // 메서드 - 로컬 변수와 스택 메모리
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_13 {
         

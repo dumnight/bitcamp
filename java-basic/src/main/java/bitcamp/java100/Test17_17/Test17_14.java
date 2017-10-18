@@ -1,6 +1,6 @@
 // 메서드 - call by value(값) 와 call by reference(주소) 
 // call by value 와 call by reference의 차이점
-package bitcamp.java100;
+package bitcamp.java100.Test17_17;
 
     public class Test17_14 {
         // call by value
