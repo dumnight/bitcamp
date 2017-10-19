@@ -62,10 +62,7 @@ public class Test21_8 {
         } while( console.readLine("계속하시겠습니까? (y/n)").equals("y"));
         
         for (int i = 0; i < arr.size(); i++) {
-            System.out.println(arr.get(i).name);
-            System.out.println(arr.get(i).email);
-            System.out.println(arr.get(i).phone);
-            
+            System.out.println(arr.get(i).name + "      " + arr.get(i).email + "  " + arr.get(i).phone);
         }
         
 

@@ -24,13 +24,10 @@ public class Test21_7 {
         
         String r;
         
-            r = String.valueOf(console.readLine("문자열:"));
-            //전체길이에서 0인덱스를 포함해 i--를 이용해 반대로 읽음
-            for (int i = r.length() -1; i>=0; i--) {
-                System.out.print(r.charAt(i));
-                
-        }
-        
+        r = String.valueOf(console.readLine("문자열: "));
+                for(int i = r.length()-1; i >=0; i--) {
+                    System.out.print(r.charAt(i));
+                }
         
         
     }

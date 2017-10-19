@@ -39,9 +39,10 @@ public class Test21_5 {
             if(dan >= 2 & dan <= 9) {
                 for(int i = 1; i < 10; i++)
                     System.out.println(dan + "*" + i + "=" + dan * i + " ");
+                    
             } else if(dan > 0) {
                 System.out.println("2와 9사이 값을 입력");
-                
+                //throw new RuntimeException("구구단의 범위를 초과함");
             } else {
                 System.out.println("종료");
                 break;
