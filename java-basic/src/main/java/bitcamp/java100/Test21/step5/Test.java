@@ -81,7 +81,7 @@ public class Test {
                 // 입력한걸 소문자로 바꾼다음에 값과 비교
                break; 
             }
-            //배열에 저장된 값을 출력한다.
+            //배열에 저장된 값을 출력한다. 
             for(int i = 0; i < cursor; i++) {
             System.out.printf("%s, %s, %s\n", contacts[i].name, contacts[i].email, contacts[i].tel);
             } 
