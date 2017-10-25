@@ -1,5 +1,4 @@
-//: ## ver 08
-//: - 클래스를 관리하기 쉽도록 별도의 파일로 분리하다. 
+
 //: - 메서드를 사용하여 반복 코드를 분리한다.
 //: 
 //: 여러 명의 성적을 저장하고 다음과 같이 출력하라!
@@ -53,6 +52,7 @@ public class App {
 // 리펙토링을 수행한다.
 // 즉 메서드를 관리하기 쉽도록 별도의 클래스로 분류한다.
 
+/*
 public class App{
     
     
@@ -69,4 +69,103 @@ public class App{
                     Score.print(s);
                 }
     }
+} */
+
+
+//ver.10
+/*
+public class App{
+    public static void main(String[] args) {
+        
+        Score[] scores = {
+            new Score("홍길동", 100, 129, 143), 
+            new Score("길동홍", 122, 129, 543), 
+            new Score("동홍길", 100, 429, 143)};
+                
+        for( Score s : scores) {
+            s.print();
+        }
+        
+    }   
+} */
+//ver.11
+/*
+public class App{
+    
+    static boolean confirm(String message) {
+        Scanner keyScan = new Scanner(System.in);
+        System.out.println(message);
+        String response = keyScan.nextLine().toLowerCase();
+        
+        if(response.equals("y") || response.equals("yes"))
+            return true;
+        return false;
+        
+    }
+    
+                
+    public static void main(String[] args) {
+        Score[] scores = new Score[100];
+        int cursor = 0;
+        
+        while(true) {
+            Score score = new Score();
+            score.input();
+            scores[cursor++] = score;
+            
+         if(!confirm("계속 하시겠습니까?"))
+             break;
+        }
+        for(int i = 0; i < cursor; i++) {
+            scores[i].print();
+        }
+           
+        
+    }   
+} */
+//ver.12
+/*
+public class App{
+    
+                
+    public static void main(String[] args) {
+        
+        while(true) {
+            Score score = new Score();
+            ScoreView.input(score);
+            ScoreDao.add(score);
+            
+         if(!MessageBox.confirm("계속 하시겠습니까?"))
+             break;
+        }
+        for(int i = 0; i < ScoreDao.size(); i++) {
+            ScoreView.print(ScoreDao.get(i));
+        }
+           
+        
+    }   
+}*/
+//ver 13
+public class App{
+    
+    
+    public static void main(String[] args) {
+        ScoreDao scoredao = new ScoreDao();
+        ScoreView scoreview = new ScoreView();
+        
+        while(true) {
+            Score score = new Score();
+            scoreview.input(score);
+            scoredao.add(score);
+            
+         if(!MessageBox.confirm("계속 하시겠습니까?"))
+             break;
+        }
+        for(int i = 0; i < scoredao.size(); i++) {
+            scoreview.print(scoredao.get(i));
+        }
+           
+        
+    }   
 }
+

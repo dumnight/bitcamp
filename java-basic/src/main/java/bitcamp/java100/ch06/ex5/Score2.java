@@ -12,7 +12,7 @@ public class Score2 {
     float aver;
         
     void input() {
-        Scanner keyScan = new Scanner(System.in);
+        Scanner keyScan = new Scanner(System.in); 
         System.out.print("이름 : ");
         this.name = keyScan.nextLine();
         
@@ -29,6 +29,7 @@ public class Score2 {
         //keyScan.close();
         
     }
+    
     
     void compute() {
         this.sum = this.kor + this.eng + this.math;
