@@ -1,4 +1,5 @@
 //Encapsulation(캡슐화)
+
 //멤버에 대한 접근을 제어하는 기법을 말한다
 //접근 레벨을 4가지로 조정할 수 있다
 //public - 전체공개
@@ -8,5 +9,8 @@
 package bitcamp.java100.ch08.ex1;
 
 public class A {
-    int v1;
+    static private int v1;
+    static int v2;
+    static protected int v3;
+    static public int v4;
 }
