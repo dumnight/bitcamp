@@ -42,7 +42,7 @@ public class Test2 {
         //한개의 변수도 같은 종류의 여러 클래스의 객체를 저장할 수 있어서 프로그래밍이 편하다
         
         
-        c = new Vehicle();
+        // c = new Vehicle(); 컴파일오류 
         
     }
 

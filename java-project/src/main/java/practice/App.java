@@ -1,25 +1,41 @@
 package practice;
 
-public class App{
+import java.util.Scanner;
+
+public class App {
     
+    static boolean confirm(String message) {
+        Scanner keyScan = new Scanner(System.in);
+        System.out.println(message);
+        String response = keyScan.nextLine().toLowerCase();
+        if(response.equals("y") || response.equals("yes"))
+            return true;
+        return false;
+    }
     
     public static void main(String[] args) {
-        ScoreDao scoredao = new ScoreDao();
-        ScoreView scoreview = new ScoreView();
+        
+       // Score[] scores = new Score[100];
+        //int cursor = 0;
+        
+        ArrayList list = new ArrayList();
         
         while(true) {
             Score score = new Score();
-            scoreview.input(score);
-            scoredao.add(score);
+            score.input();
+            list.add(score);
+       //     scores[cursor++] = score;
+            if(!confirm("계속하냐?")) 
+                break;
             
-         if(!MessageBox.confirm("계속 하시겠습니까?"))
-             break;
         }
-        for(int i = 0; i < scoredao.size(); i++) {
-            scoreview.print(scoredao.get(i));
-        }
+        for(int i = 0; i < list.size(); i++) {
+            //Score s = (Score)list.get(i);
+            //s.print();
+            ((Score)list.get(i)).print();
            
+        }
+            
         
-    }   
+    }
 }
-
