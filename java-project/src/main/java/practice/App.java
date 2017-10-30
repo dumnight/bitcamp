@@ -35,7 +35,7 @@ public class App {
             ((Score)list.get(i)).print();
            
         }
-            
+           
         
     }
 }
