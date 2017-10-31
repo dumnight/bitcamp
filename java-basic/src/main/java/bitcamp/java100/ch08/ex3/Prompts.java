@@ -6,7 +6,7 @@ public class Prompts {
     static Scanner keyScan;
     
     static {
-        Scanner keyScan = new Scanner(System.in);
+        keyScan = new Scanner(System.in);
     }
     
     static boolean confirm(String message) {

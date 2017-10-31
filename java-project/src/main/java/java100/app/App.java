@@ -6,10 +6,10 @@ public class App {
     
     static boolean confirm(String message) {
         Scanner keyScan = new Scanner(System.in);
-        System.out.print(message);
+        System.out.println(message);
         String response = keyScan.nextLine().toLowerCase();
         
-        if (response.equals("y") || response.equals("yes"))
+        if(response.equals("y") || response.equals("yes"))
             return true;
         return false;
     }
