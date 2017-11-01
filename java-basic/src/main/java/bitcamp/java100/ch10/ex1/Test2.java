@@ -5,6 +5,7 @@ public class Test2 {
     
     // static nested class
     static class A {}
+    
     // non static nested class = inner class
     // 인스턴스가 있어야만 사용할 수 있는 클래스
     class B {}
@@ -15,7 +16,7 @@ public class Test2 {
     };
     public static void main(String[] args) {
         // local class
-        // 특정 메서드에서만 사용하도록 메서드 안에 정의된 클래스ㄴ
+        // 특정 메서드에서만 사용하도록 메서드 안에 정의된 클래스
         class C {}
         
         // 익명 클래스

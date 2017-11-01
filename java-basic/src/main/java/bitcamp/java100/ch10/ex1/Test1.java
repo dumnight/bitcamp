@@ -16,7 +16,7 @@ public class Test1 {
         //D 클래스는 공개 패키지 안에서만 사용되도록 비공개이기 때문에 다른 패키지에서 사용할 수 없다 
         
         E obj9 = new E();
-        F obj6 = new F();
+        H obj6 = new H();
         G obj7 = new G();
         
     }
