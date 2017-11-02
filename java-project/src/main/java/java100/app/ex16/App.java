@@ -1,4 +1,4 @@
-package java100.app;
+package java100.app.ex16;
 
 import java.util.Scanner;
  
@@ -15,7 +15,8 @@ public class App {
     }
     
     public static void main(String[] args) {
-        ArrayList list = new ArrayList();
+        //제네릭이 적용된 ArrayList를 사용
+        ArrayList<Score> list = new ArrayList();
         
         while (true) {
             Score score = new Score(); // 성적 데이터를 저장할 빈 객체를 준비한다.
@@ -28,7 +29,9 @@ public class App {
         }
         
         for (int i = 0; i < list.size(); i++) {
-            ((Score)list.get(i)).print();
+            //ArrayList에 어떤 값을 저장할 지 알려줬기 때문에 값을 꺼낼때 따로 형변환 할 필요가 없다
+            //((Score)list.get(i)).print();
+            (list.get(i)).print();
         }
     }
 }

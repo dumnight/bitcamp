@@ -1,8 +1,5 @@
-//: ## 캡슐화 적용
-//: - 모든 필드에 대해 외부 접근을 차단한다.
-//:   단 자식 클래스에서는 직접 접근할 수 있게 허락한다.
-//: 
-package practice;
+package java100.app.ex18;
+
 import java.util.Scanner;
 
 public class Score {  
@@ -27,11 +24,10 @@ public class Score {
     
     //: > 내부에서만 사용할 메서드이기 때문에 공개하지 않는다.
     private void compute() {
-        int sum = 0;
+        this.sum = 0;
         for (int sub : this.subjects) {
-            sum += sub;
+            this.sum += sub;
         } 
-        this.sum = sum;
         this.aver = (float)this.sum / this.subjects.length;
     }
     
@@ -60,36 +56,38 @@ public class Score {
         
         this.compute();
     }
-    
     public void update() {
         Scanner keyScan = new Scanner(System.in);
         
-        System.out.printf("국어(%d)", this.subjects[0]);
-        int kor = subjects[0];
+        System.out.printf("국어? (%d)", this.subjects[0]);
+        int kor = this.subjects[0];
         try {
-            kor = Integer.parseInt(keyScan.nextLine());
+            kor = Integer.parseInt(keyScan.nextLine()); // 무조건 값을 저장할 수없다 변경을 취소할 수 있기 때문에 임시변수를 만들어 저장
         } catch(Exception e) {}
         
-        System.out.printf("영어(%d)", this.subjects[1]);
-        int eng = subjects[1];
+        System.out.printf("영어? (%d)", this.subjects[1]);
+        int eng = this.subjects[1];
         try {
-            eng = Integer.parseInt(keyScan.nextLine());
+            eng = Integer.parseInt(keyScan.nextLine()); // 무조건 값을 저장할 수없다 변경을 취소할 수 있기 때문에 임시변수를 만들어 저장
         } catch(Exception e) {}
         
-        System.out.printf("수학(%d)", this.subjects[2]);
-        int math = subjects[2];
+        System.out.printf("수학? (%d)", this.subjects[2]);
+        int math = this.subjects[2];
         try {
-            math = Integer.parseInt(keyScan.nextLine());
+            math = Integer.parseInt(keyScan.nextLine()); // 무조건 값을 저장할 수없다 변경을 취소할 수 있기 때문에 임시변수를 만들어 저장
         } catch(Exception e) {}
-        if(confirm2("변경하실? y/N")) {
+        
+        if(confirm2("변경하시겠습니까? (y/N) ")) {
             this.subjects[0] = kor;
             this.subjects[1] = eng;
             this.subjects[2] = math;
             this.compute();
-            System.out.println("변경했다");
+            System.out.println("변경하였습니다.");
+            
         } else {
-            System.out.println("변경취소");
+            System.out.println("변경을 취소하였습니다");
         }
+        
         
     }
     
@@ -105,7 +103,6 @@ public class Score {
         }
         return true;
     }
-
     public void printDetail() {
         System.out.printf("%-4s, %4d, %4d, %4d, %4d, %6.1f\n",  
                 this.name,
