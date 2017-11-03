@@ -1,4 +1,4 @@
-package java100.app.ex18;
+package java100.app.ex20;
 
 import java.util.Scanner;
 
