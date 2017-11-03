@@ -65,30 +65,29 @@ public class Score {
         Scanner keyScan = new Scanner(System.in);
         
         System.out.printf("국어(%d)", this.subjects[0]);
-        int kor = subjects[0];
+        int kor = this.subjects[0];
         try {
             kor = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}
-        
-        System.out.printf("영어(%d)", this.subjects[1]);
-        int eng = subjects[1];
+        System.out.printf("국어(%d)", this.subjects[1]);
+        int eng = this.subjects[1];
+        try {
+            eng = Integer.parseInt(keyScan.nextLine());
+        } catch(Exception e) {}
+        System.out.printf("국어(%d)", this.subjects[2]);
+        int math = this.subjects[2];
         try {
             eng = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}
         
-        System.out.printf("수학(%d)", this.subjects[2]);
-        int math = subjects[2];
-        try {
-            math = Integer.parseInt(keyScan.nextLine());
-        } catch(Exception e) {}
-        if(confirm2("변경하실? y/N")) {
+        if(confirm2("변경하시겠습니까? y/N")) {
             this.subjects[0] = kor;
             this.subjects[1] = eng;
             this.subjects[2] = math;
             this.compute();
-            System.out.println("변경했다");
+            System.out.println("변경되었습니다");
         } else {
-            System.out.println("변경취소");
+            System.out.println("변경 취소");
         }
         
     }

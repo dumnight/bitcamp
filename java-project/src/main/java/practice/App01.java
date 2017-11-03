@@ -53,11 +53,10 @@ public class App01 {
                     score = new Score();
                     score.input();
                     list.add(score);
-                    if(!confirm("계속? Y/n")) {
+                    if(!confirm("계속 하시겠습니까? Y/n")) {
                         break;
                     }
                 }
-                
                 break;
             case "list":
                 System.out.println("학생목록");
@@ -65,62 +64,44 @@ public class App01 {
                 while(iterator.hasNext()) {
                     iterator.next().print();
                 }
-                
                 break;
             case "view":
                 System.out.println("학생정보");
-                name = prompt("이름? ");
+                name = prompt("이름: ");
+                score = null;
                 iterator = list.iterator();
-                while(iterator.hasNext()) {
+                while(iterator.hasNext()){
                     Score temp = iterator.next();
                     if(temp.name.equals(name)) {
                         score = temp;
                     }
                 }
                 if(score == null) {
-                    System.out.printf("%s 이런애 없어",name);
+                    System.out.printf("%s 는 존재하지 않는 학생정보입니다", name);
                 } else {
                     score.printDetail();
                 }
-                
                 break;
                 
             case "update":
                 System.out.println("학생정보변경");
-                name = prompt("이름? ");
+                name = prompt("이름: ");
+                score = null;
                 iterator = list.iterator();
-                while(iterator.hasNext()) {
+                while(iterator.hasNext()){
                     Score temp = iterator.next();
                     if(temp.name.equals(name)) {
                         score = temp;
                     }
                 }
                 if(score == null) {
-                    System.out.printf("%s 이런애 없어",name);
+                    System.out.printf("%s 는 존재하지 않는 학생정보입니다", name);
                 } else {
                     score.update();
                 }
                 break;
             case "delete":
                 System.out.println("학생삭제");
-                name = prompt("이름? ");
-                iterator = list.iterator();
-                while(iterator.hasNext()) {
-                    Score temp = iterator.next();
-                    if(temp.name.equals(name)) {
-                        score = temp;
-                    }
-                }
-                if(score == null) {
-                    System.out.printf("%s 이런애 없어",name);
-                } else {
-                    if(confirm2("진짜 지움? y/N")) {
-                        list.remove(score);
-                        System.out.println("삭제함");
-                    } else {
-                        System.out.println("삭제 취소");
-                    }
-                }
                 break;
             case "quit":
                 System.out.println("프로그램을 종료합니다");
