@@ -69,17 +69,17 @@ public class Score {
         try {
             kor = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}
-        System.out.printf("국어(%d)", this.subjects[1]);
+        System.out.printf("영어(%d)", this.subjects[1]);
         int eng = this.subjects[1];
         try {
             eng = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}
-        System.out.printf("국어(%d)", this.subjects[2]);
+        System.out.printf("수학(%d)", this.subjects[2]);
         int math = this.subjects[2];
         try {
-            eng = Integer.parseInt(keyScan.nextLine());
+            math = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}
-        
+         
         if(confirm2("변경하시겠습니까? y/N")) {
             this.subjects[0] = kor;
             this.subjects[1] = eng;
