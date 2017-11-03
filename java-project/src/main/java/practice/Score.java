@@ -78,7 +78,7 @@ public class Score {
         int math = this.subjects[2];
         try {
             math = Integer.parseInt(keyScan.nextLine());
-        } catch(Exception e) {}
+        } catch(Exception e) {}  
          
         if(confirm2("변경하시겠습니까? y/N")) {
             this.subjects[0] = kor;
