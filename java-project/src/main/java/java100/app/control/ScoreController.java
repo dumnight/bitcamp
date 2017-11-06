@@ -1,15 +1,13 @@
 package java100.app.control;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
 
 import java100.app.domain.Score;
 import java100.app.util.Prompts;
 
-public class ScoreController {
-    private ArrayList<Score> list = new ArrayList<>();
-    static Scanner keyScan = new Scanner(System.in);
+public class ScoreController extends GenericController<Score> {
+    
+	@Override
     public void execute() {
         loop:
             while (true) {

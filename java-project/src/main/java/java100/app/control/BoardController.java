@@ -1,17 +1,14 @@
 package java100.app.control;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
 
 import java100.app.domain.Board;
 import java100.app.util.Prompts;
 
-public class BoardController {
-    private ArrayList<Board> list = new ArrayList<>();
-    static Scanner keyScan = new Scanner(System.in);
+public class BoardController extends GenericController<Board> {
     
+	@Override
     public void execute() {
         loop:
             while (true) {
