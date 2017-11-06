@@ -1,7 +1,9 @@
-package java100.app.ex21;
+package java100.app.domain;
 
 import java.sql.Date;
 import java.util.Scanner;
+
+import java100.app.util.Prompts;
 
 public class Board {  
     
@@ -51,23 +53,7 @@ public class Board {
         this.viewCount = viewCount;
     }
     
-    public void print() {
-        System.out.printf("%d, %s, %s, %d\n", this.no, this.title, this.regDate.toString(), this.viewCount);
-    }
     
-    public void input() {
-        Scanner keyScan = new Scanner(System.in);
-        
-        System.out.print("번호? ");
-        this.no = Integer.parseInt(keyScan.nextLine());
-        System.out.print("제목? ");
-        this.title = keyScan.nextLine();
-        System.out.print("내용? ");
-        this.content = keyScan.nextLine();
-        
-        this.regDate = new Date(System.currentTimeMillis());
-        
-    }
     public void update() {
         Scanner keyScan = new Scanner(System.in);
         
@@ -93,11 +79,4 @@ public class Board {
         
     }
     
-    public void printDetail() {
-        System.out.printf("제목: %s\n", this.title);
-        System.out.printf("내용: %s\n", this.content);
-        System.out.printf("등록일: %s\n", this.regDate.toString());
-        System.out.printf("조회수: %d\n", ++this.viewCount);
-        
-    }
 }

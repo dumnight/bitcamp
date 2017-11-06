@@ -1,4 +1,4 @@
-package java100.app.ex21;
+package java100.app.util;
 
 import java.util.Scanner;
 
@@ -6,6 +6,15 @@ public class Prompts {
     
     static Scanner keyScan = new Scanner(System.in);
     
+    public static int inputInt(String message, Object... values) {
+        System.out.printf(message, values);
+        return Integer.parseInt(keyScan.nextLine());
+    }
+    public static String inputString(String message, Object...values) { //Object... values 가변 파라미터
+        System.out.printf(message, values);
+        return keyScan.nextLine();
+    }
+    @Deprecated
     public static String input(String message) {
         System.out.print(message);
         return keyScan.nextLine();

@@ -80,7 +80,7 @@ public class Score {
             math = Integer.parseInt(keyScan.nextLine());
         } catch(Exception e) {}  
          
-        if(confirm2("변경하시겠습니까? y/N")) {
+        if(Prompts.confirm2("변경하시겠습니까? y/N")) {
             this.subjects[0] = kor;
             this.subjects[1] = eng;
             this.subjects[2] = math;
@@ -90,19 +90,6 @@ public class Score {
             System.out.println("변경 취소");
         }
         
-    }
-    
-    static boolean confirm2(String message) {
-        Scanner keyScan = new Scanner(System.in);
-        System.out.print(message);
-        String response = keyScan.nextLine().toLowerCase();
-        
-        if (response.equals("n") || 
-                response.equals("no") || 
-                response.equals("")) {
-            return false;
-        }
-        return true;
     }
 
     public void printDetail() {

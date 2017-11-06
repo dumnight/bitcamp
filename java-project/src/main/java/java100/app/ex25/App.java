@@ -29,9 +29,13 @@
 ...
 
  */
-package java100.app.ex21;
+package java100.app.ex25;
 
 import java.util.Scanner;
+
+import java100.app.control.BoardController;
+import java100.app.control.MemberController;
+import java100.app.control.ScoreController;
  
 public class App {
     
