@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import java100.app.control.BoardController;
+import java100.app.control.Controller;
 import java100.app.control.GenericController;
 import java100.app.control.MemberController;
 import java100.app.control.RoomController;
@@ -44,7 +45,7 @@ public class App {
     
     static Scanner keyScan = new Scanner(System.in);
     
-    static HashMap<String, GenericController<?>> controllerMap = new HashMap<>();
+    static HashMap<String, Controller> controllerMap = new HashMap<>();
     
     public static void main(String[] args) {
     	controllerMap.put("1",  new ScoreController());
@@ -86,7 +87,7 @@ public class App {
     
     public static void doGo (String menuNo) {
     	
-    	GenericController<?> controller = controllerMap.get(menuNo);
+    	Controller controller = controllerMap.get(menuNo);
     	
     	if(controller == null) {
     		System.out.println("메뉴 번호가 잘못 되었습니다");
