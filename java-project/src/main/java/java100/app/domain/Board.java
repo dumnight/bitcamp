@@ -3,6 +3,7 @@ package java100.app.domain;
 import java.sql.Date;
 import java.util.Scanner;
 
+import java100.app.control.CSVFormatException;
 import java100.app.util.Prompts;
 
 public class Board {  
@@ -17,11 +18,33 @@ public class Board {
     public Board() {
      
     }
+    
+    public Board(String csv) throws CSVFormatException {
+    	String[] rec = csv.split(",");
+        if (rec.length != 5) // 데이터의 개수가 올바르지 않다면,
+            throw new CSVFormatException("CSV 데이터 항목의 개수가 올바르지 않습니다");
+	  	 this.no = Integer.parseInt(rec[0]);
+	   	 this.title = rec[1];
+	   	 this.content = rec[2];
+	   	 this.regDate = Date.valueOf(rec[3]);
+	   	 this.viewCount = Integer.parseInt(rec[4]);
+    } 
+    
     @Override
     public String toString() {
         return "Board [no=" + no + ", title=" + title + ", content=" + content + ", regDate=" + regDate + ", viewCount="
                 + viewCount + "]";
     }
+    
+    public String toCSVString() {
+		return String.format("%d,%s,%s,%s,%d", 
+                this.getNo(), 
+                this.getTitle(), 
+                this.getContent(),
+                this.getRegDate().toString(),
+                this.getViewCount());
+	}
+    
     public int getNo() {
         return no;
     }

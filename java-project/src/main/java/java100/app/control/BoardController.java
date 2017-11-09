@@ -1,13 +1,63 @@
 package java100.app.control;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import java100.app.domain.Board;
+import java100.app.domain.Member;
 import java100.app.util.Prompts;
 
 public class BoardController extends GenericController<Board> {
+	
+	private String dataFilePath;
     
+	public BoardController(String dataFilePath) {
+		this.dataFilePath = dataFilePath;
+		this.init();
+	}
+	
+	@Override
+    public void destroy() {
+        
+        try (FileWriter out = new FileWriter(this.dataFilePath);) {
+            for (Board board : this.list) {
+                out.write(board.toCSVString() + "\n");
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // CSV 형식으로 저장된 파일에서 성적 데이터를 읽어 
+    // ArrayList에 보관한다.
+    @Override
+    public void init() {
+        
+        try (
+                FileReader in = new FileReader(this.dataFilePath);
+                Scanner lineScan = new Scanner(in);) {
+            
+            String csv = null;
+            while (lineScan.hasNextLine()) {
+                csv = lineScan.nextLine();
+               try {
+            	   list.add(new Board(csv));
+               } catch (CSVFormatException e) {
+            	   System.err.println("CSV 데이터 형식 오류");
+            	   e.printStackTrace();
+              }
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	@Override
     public void execute() {
         loop:

@@ -48,8 +48,7 @@ public class App {
             System.out.println();
            
         }
-        
-       
+    	
     }
     private static void doGo(String menuNo) {
     	
