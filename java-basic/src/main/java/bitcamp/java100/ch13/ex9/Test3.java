@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Test3 {
 	
-	
 	static class Score{
 		String name;
 		int kor;
