@@ -18,9 +18,6 @@ public class Test2 {
 		
 		//디렉토리까지 전부 생성
 		System.out.printf("디렉토리2 생성=%b\n",file3.mkdirs());
-		
-		
-		
 	}
 }
 
