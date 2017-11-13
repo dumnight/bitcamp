@@ -17,7 +17,7 @@ package bitcamp.java100.Test17_17;
            
             Test17_16_b.m4();
             //다른 패키지에 있는 클래스를 사용할 때는 반드시 전체 패키지명까지 지정해야 한다.
-            other.Test17_16_c.m1();
+            bitcamp.java100.Test17_17.Test17_16_c.m1();
             
         }
     }  
