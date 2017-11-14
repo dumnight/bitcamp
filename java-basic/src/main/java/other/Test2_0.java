@@ -3,7 +3,7 @@ package other;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 
-public class Test2 {
+public class Test2_0 {
 	public static void main(String[] args) throws Exception {
 		
 		Score s = new Score();
