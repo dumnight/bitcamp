@@ -1,19 +1,18 @@
-package other;
+package bitcamp.java100.ch15.ex7;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
 
-public class Client {
+public class PingClient {
 	public static void main(String[] args) throws Exception {
 		
 		Scanner keyboard = new Scanner(System.in);
-		
-		System.out.print("서버 주소");
+		System.out.print("서버 주소? ");
 		String serverAddr = keyboard.nextLine();
 		
-		System.out.print("보낼 메시지");
+		System.out.print("보낼 메시지? ");
 		String message = keyboard.nextLine();
 		
 		keyboard.close();
@@ -22,9 +21,9 @@ public class Client {
 		
 		byte[] bytes = message.getBytes("UTF-8");
 		
-		InetAddress ip = InetAddress.getByName(serverAddr);
-		
-		int port = 9999;
+	    InetAddress ip = InetAddress.getByName(serverAddr);
+	    int port = 9999;
+	    
 		
 		DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, ip, port);
 		
@@ -33,6 +32,6 @@ public class Client {
 		
 		System.out.println("데이터 출력 완료");
 		
+		
 	}
-	
 }
