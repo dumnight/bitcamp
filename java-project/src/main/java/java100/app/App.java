@@ -33,10 +33,18 @@ public class App {
     HashMap<String, Controller> controllerMap = new HashMap<>();
 
     void init() {
-        controllerMap.put("/score", new ScoreController("./data/score.csv"));
-        controllerMap.put("/member", new MemberController("./data/member.csv"));
-        controllerMap.put("/board", new BoardController("./data/board.csv"));
-        controllerMap.put("/room", new RoomController("./data/room.csv"));
+        ScoreController scoreController = new ScoreController();
+        scoreController.init();
+        RoomController roomController = new RoomController();
+        roomController.init();
+        MemberController memberController = new MemberController();
+        roomController.init();
+        BoardController boardController = new BoardController();
+        boardController.init();
+        controllerMap.put("/score", scoreController );
+        controllerMap.put("/member", memberController);
+        controllerMap.put("/board", boardController);
+        controllerMap.put("/room", roomController);
 
     }
 
@@ -45,7 +53,7 @@ public class App {
         ss = new ServerSocket(9999);
         System.out.println("서버 실행!");
 
-        while (true) {
+        while (true) {  
             new HttpAgent(ss.accept()).start();
         }
     }
@@ -145,5 +153,4 @@ public class App {
             }
         }
     }
-
 }
