@@ -5,9 +5,10 @@ public class Room {
 	protected String name;
 	protected int capacity;
 	protected int no;
+	
 	public Room() {}
 	
-	public Room(String location, String name, int capacity, int no) {
+	public Room(String location, String name, int no, int capacity) {
 		this.location = location;
 		this.name = name;
 		this.capacity = capacity;

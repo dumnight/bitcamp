@@ -1,10 +1,10 @@
-//: ## ver 35
-//: - 버전 34는 여러 사람이 서버에 접속 할 수 있지만, 단 접속한 순서대로 크라이언트 요청을 처리하는 방식이다. 접속한 사용자가 종료를 해야만 다음 사용자가 명령을 요청할 수 있는 구조였다.
-//: - 버전 34의 문제점을 해결하기 위해 스레드를 이용하여 여러 사람이 동시에 작업할 수 있도록 한다.
+//: ## ver38
+//: - DBMS를 사용하여 데이터를 저장하라!
 //: - 학습목표
-//:   - 스레드 사용법을 익힌다.
-//: 
-package practice;
+//:   - JDBC API를 사용하는 방법을 훈련한다.
+//:   - SQL 사용 방법을 훈련한다. 
+//:   
+package practice.java100.app;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -24,6 +24,20 @@ import java100.app.control.Response;
 import java100.app.control.RoomController;
 import java100.app.control.ScoreController;
 
+// 0) JDBC API 사용 준비
+//    => build.gradle 파일에 의존 라이브러리 MySQL JDBC 드라이버를 등록한다.
+//    => "gradlew eclipse"를 실행하여 라이브러리를 다운로드하고 
+//       이클립스 설정 파일을 갱신한다.
+//    => 프로젝트를 리프래시 하여 상태를 갱신한다.
+//
+// 1) 성적, 회원, 게시물, 강의실 데이터를 저장할 테이블을 준비한다.
+//    => bitcamp-docs/java-project.sql
+//
+// 2) 성적관리 기능에 DBMS 적용
+//    => Score 클래스를 테이블 정의에 맞춰서 변경x
+//    => ScoreController 클래스에 JDBC API 적용
+// 3) 회원관리, 강의실관리, 게시물관리 기능에도 DBMS 적용
+//
 public class App {
 
     ServerSocket ss;
@@ -34,10 +48,21 @@ public class App {
             new HashMap<>();
 
     void init() {
-        controllerMap.put("/score", new ScoreController("./data/score.csv"));
-        controllerMap.put("/member", new MemberController("./data/member.csv"));
-        controllerMap.put("/board", new BoardController("./data/board.csv"));
-        controllerMap.put("/room", new RoomController("./data/room.csv")); 
+        ScoreController scoreController = new ScoreController();
+        scoreController.init();
+        controllerMap.put("/score", scoreController);
+        
+        MemberController memberController = new MemberController();
+        memberController.init();
+        controllerMap.put("/member", memberController);
+        
+        BoardController boardController = new BoardController();
+        boardController.init();
+        controllerMap.put("/board", boardController);
+        
+        RoomController roomController = new RoomController();
+        roomController.init();
+        controllerMap.put("/room", roomController); 
 
     }
 
@@ -48,7 +73,7 @@ public class App {
         
         while (true) {
             // 클라이언트가 연결되면, 스레드에 처리를 위임한다.
-            new RequestProcessor(ss.accept()).start();
+            new HttpAgent(ss.accept()).start();
         }
     }
 
@@ -106,10 +131,10 @@ public class App {
         app.service();
     }
     
-    class RequestProcessor extends Thread {
+    class HttpAgent extends Thread {
         Socket socket;
         
-        public RequestProcessor(Socket socket) {
+        public HttpAgent(Socket socket) {
             this.socket = socket;
         }
         
@@ -164,6 +189,7 @@ public class App {
             }
         }
     }
+
 }
 
 

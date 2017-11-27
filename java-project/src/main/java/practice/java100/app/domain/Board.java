@@ -1,4 +1,4 @@
-package java100.app.domain;
+package practice.java100.app.domain;
 
 import java.sql.Date;
 
@@ -60,3 +60,7 @@ public class Board {
     }
     
 }
+
+
+
+

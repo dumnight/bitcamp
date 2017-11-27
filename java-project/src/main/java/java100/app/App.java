@@ -31,7 +31,8 @@ public class App {
 
     // 이제 HashMap에 보관하는 값은 Controller 규칙을 준수한 객체이다.
     HashMap<String, Controller> controllerMap = new HashMap<>();
-
+    
+    
     void init() {
         ScoreController scoreController = new ScoreController();
         scoreController.init();
@@ -41,7 +42,7 @@ public class App {
         roomController.init();
         BoardController boardController = new BoardController();
         boardController.init();
-        controllerMap.put("/score", scoreController );
+        controllerMap.put("/score", scoreController);
         controllerMap.put("/member", memberController);
         controllerMap.put("/board", boardController);
         controllerMap.put("/room", roomController);

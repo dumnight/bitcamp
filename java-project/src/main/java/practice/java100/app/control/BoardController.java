@@ -1,16 +1,13 @@
-package java100.app.control;
+package practice.java100.app.control;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
-import java100.app.dao.BoardDao;
-import java100.app.domain.Board;
+import practice.java100.app.dao.BoardDao;
+import practice.java100.app.domain.Board;
 
 public class BoardController implements Controller {
+    
     BoardDao boardDao = new BoardDao();
     
     @Override
@@ -18,12 +15,9 @@ public class BoardController implements Controller {
     
     @Override
     public void init() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            throw new RuntimeException("JDBC 드라이버 클래스를 찾을 수 없습니다");
-        }
+       
     }
+
     @Override
     public void execute(Request request, Response response) {
         switch (request.getMenuPath()) {
@@ -38,36 +32,42 @@ public class BoardController implements Controller {
     }
     
     private void doList(Request request, Response response) {
+        
         PrintWriter out = response.getWriter();
         out.println("[게시물 목록]");
         
         try {
             List<Board> list = boardDao.selectList();
-            for(Board board : list) {
-                out.printf("%d, %s, %s, %s, %d\n", 
-                        board.getNo(), board.getTitle(), board.getContent(), board.getRegDate(), board.getViewCount());
+            for (Board board : list) {
+                out.printf("%d, %s, %s, %d\n",
+                        board.getNo(),
+                        board.getTitle(), 
+                        board.getRegDate(),
+                        board.getViewCount());
             }
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     }
 
     private void doAdd(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[게시물 등록]");
         
         try {
             Board board = new Board();
             board.setTitle(request.getParameter("title"));
-            board.setContent(request.getParameter("conts"));
+            board.setContent(request.getParameter("content"));
+            
             boardDao.insert(board);
             out.println("저장하였습니다.");
             
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     } 
     
@@ -76,10 +76,11 @@ public class BoardController implements Controller {
         PrintWriter out = response.getWriter();
         out.println("[게시물 상세 정보]");
         
-            try {
-                int no = Integer.parseInt(request.getParameter("no"));
+        try {
+           
+            int no = Integer.parseInt(request.getParameter("no"));
             
-                Board board = boardDao.selectOne(no);
+            Board board = boardDao.selectOne(no);
             
                 if (board != null) {
                     out.printf("번호: %d\n", board.getNo());
@@ -88,8 +89,8 @@ public class BoardController implements Controller {
                     out.printf("등록일: %s\n", board.getRegDate());
                     out.printf("조회수: %d\n", board.getViewCount());
                 } else {
-                    out.printf("'%s'번의 게시물 정보가 없습니다.\n", 
-                            request.getParameter("no"));
+                    out.printf("'%d'번의 게시물 정보가 없습니다.\n", 
+                            no);
                 }
             
             
@@ -97,23 +98,24 @@ public class BoardController implements Controller {
             e.printStackTrace(); // for developer
             out.println(e.getMessage()); // for user
         }
-    }   
+    } 
     
     private void doUpdate(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[게시물 변경]");
         
         try {
             Board board = new Board();
             board.setTitle(request.getParameter("title"));
-            board.setContent(request.getParameter("conts"));
+            board.setContent(request.getParameter("content"));
             board.setNo(Integer.parseInt(request.getParameter("no")));
             
-            if(boardDao.update(board) > 0) {
+            if (boardDao.update(board) > 0) {
                 out.println("변경하였습니다.");
             } else {
-                out.printf("'%s'의 성적 정보가 없습니다.\n", 
-                        request.getParameter("no"));
+                out.printf("'%d'번 게시물이 없습니다.\n", 
+                        board.getNo());
             }
             
         } catch (Exception e) {
@@ -123,25 +125,26 @@ public class BoardController implements Controller {
     }
     
     private void doDelete(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[게시물 삭제]");
         
         try {
+            
             int no = Integer.parseInt(request.getParameter("no"));
             
             if (boardDao.delete(no) > 0) {
-                out.println("삭제했습니다");
+                out.println("삭제했습니다.");
             } else {
-                out.printf("'%d'의 성적 정보가 없습니다.\n", no);
+                out.printf("'%d'번의 게시물 정보가 없습니다.\n", 
+                        no);
             }
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     }
-    
-    
 }
 
 
