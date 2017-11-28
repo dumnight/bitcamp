@@ -1,4 +1,4 @@
-package java100.app.util;
+package p_java100.app.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

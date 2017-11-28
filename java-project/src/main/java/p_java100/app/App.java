@@ -1,4 +1,4 @@
-package java100.app;
+package p_java100.app;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
