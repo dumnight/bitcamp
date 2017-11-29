@@ -21,7 +21,7 @@ public class App {
     
     void init() {
         
-        beanContainer = new ApplicationContext("./bin/application-context.properties");
+        beanContainer = new ApplicationContext("./bin/application-context2.properties");
         DataSource ds = new DataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/studydb");

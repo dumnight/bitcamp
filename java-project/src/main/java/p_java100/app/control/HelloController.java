@@ -2,8 +2,11 @@ package p_java100.app.control;
 
 import java.io.PrintWriter;
 
+import java100.app.annotation.Component;
+
 // RoomController는 ArrayList를 상속 받은 서브 클래스이기도 하지만,
 // Controller라는 규칙을 따르는 클래스이기도 하다!
+@Component("/hello")
 public class HelloController implements Controller {
     
     @Override

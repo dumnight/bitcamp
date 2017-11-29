@@ -4,11 +4,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import java100.app.annotation.Component;
 import java100.app.dao.RoomDao;
 import java100.app.domain.Room;
 
-// RoomController는 ArrayList를 상속 받은 서브 클래스이기도 하지만,
-// Controller라는 규칙을 따르는 클래스이기도 하다!
+@Component("/room")
 public class RoomController extends ArrayList<Room> implements Controller {
     private static final long serialVersionUID = 1L;
 
