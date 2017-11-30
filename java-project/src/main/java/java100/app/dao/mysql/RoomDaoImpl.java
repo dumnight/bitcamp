@@ -6,38 +6,59 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import java100.app.annotation.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java100.app.dao.DaoException;
 import java100.app.dao.RoomDao;
 import java100.app.domain.Room;
 import java100.app.util.DataSource;
+
+//기존에 있던 RoomDao 클래스에서 컨트롤러가 호출하는 기본 메서드 
+//호출 규칙을 별도의 인터페이스로 분리하고,
+//이 클래스는 그 인터페이스를 구현한 클래스로 전환한다.
+//
 @Component
 public class RoomDaoImpl implements RoomDao {
+    
+    // 주입 받은 DataSource 객체를 저장할 인스턴스 변수를 준비한다.
+    @Autowired
     DataSource ds;
     
-    public void setDataSource(DataSource ds) {
-        this.ds = ds;
-    }
+    // 외부에서 DataSource 객체를 주입할 수 있도록 셋터를 준비한다.
     
-    public List<Room> selectList(){
+    // DataSource를 주입 받았다 가정하고 다음 아래의 메서드들을 변경한다.
+    // => 이렇게하면 DataSource를 얻기 위해 ApplicationContext를 사용한
+    //    코드를 제거해도 된다. 
+    // => 즉 더이상 ApplicationContext에 종속되지 않는다.
+    //
+    public List<Room> selectList() {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        
         try {
             con = ds.getConnection();
-            pstmt = con.prepareStatement("select no,name,loc,capacity from ex_room");
+            pstmt = con.prepareStatement(
+                    "select no,loc,name,capacity from ex_room");
             rs = pstmt.executeQuery();
             
             ArrayList<Room> list = new ArrayList<>();
             
-            while(rs.next()) {
-                Room room  = new Room(rs.getString("loc"), rs.getString("name"), rs.getInt("no"), rs.getInt("capacity"));
+            while (rs.next()) {
+                Room room = new Room();
+                room.setNo(rs.getInt("no"));
+                room.setLocation(rs.getString("loc"));
+                room.setName(rs.getString("name"));
+                room.setCapacity(rs.getInt("capacity"));
+                
                 list.add(room);
             }
+            
             return list;
-
+            
         } catch (Exception e) {
-            throw new DaoException();
+            throw new DaoException(e);
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {pstmt.close();} catch (Exception e) {}
@@ -48,46 +69,58 @@ public class RoomDaoImpl implements RoomDao {
     public int insert(Room room) {
         Connection con = null;
         PreparedStatement pstmt = null;
+        
         try {
             con = ds.getConnection();
-            pstmt = con.prepareStatement("insert into ex_room(name,loc,capacity) values(?,?,?)");
-            pstmt.setString(1, room.getName());
-            pstmt.setString(2, room.getLocation());
-            pstmt.setInt(3, room.getCapacity());
+            pstmt = con.prepareStatement(
+                    "insert into ex_room(loc,name,capacity) values(?,?,?)");
+            pstmt.setString(1, room.getLocation());
+            pstmt.setString(2, room.getName());
+            pstmt.setInt(3, room.getNo());
             
-            return pstmt.executeUpdate();  
+            return pstmt.executeUpdate();
             
         } catch (Exception e) {
-            throw new DaoException();
+            throw new DaoException(e);
         } finally {
             try {pstmt.close();} catch (Exception e) {}
             ds.returnConnection(con);
         }
     }
-    /*
-    public int update(Room room) {
-        
-    }
-    */
+    
     public int delete(int no) {
         Connection con = null;
         PreparedStatement pstmt = null;
+        
         try {
             con = ds.getConnection();
-            pstmt = con.prepareStatement("delete from ex_room where no=?");
+            pstmt = con.prepareStatement(
+                    "delete from ex_room where no=?");
             pstmt.setInt(1, no);
-
+            
             return pstmt.executeUpdate();
-
+            
         } catch (Exception e) {
-            throw new DaoException();
+            throw new DaoException(e);
         } finally {
             try {pstmt.close();} catch (Exception e) {}
             ds.returnConnection(con);
         }
     }
-    /*
-    public Room selectOne(int no) {
-        
-    } */
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

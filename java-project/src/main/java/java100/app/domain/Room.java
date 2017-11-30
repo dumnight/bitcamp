@@ -1,24 +1,23 @@
 package java100.app.domain;
 
 public class Room {
-	protected String location;
-	protected String name;
-	protected int capacity;
-	protected int no;
-	
-	public Room() {}
-	
-	public Room(String location, String name, int no, int capacity) {
-		this.location = location;
-		this.name = name;
-		this.capacity = capacity;
-		this.no = no;
-	}
-	
-
-	@Override
+    protected int no;
+    protected String location;
+    protected String name;
+    protected int capacity;
+    
+    public Room() {}
+    
+    public Room(int no, String location, String name, int capacity) {
+        this.no = no;
+        this.location = location;
+        this.name = name;
+        this.capacity = capacity;
+    }
+    
+    @Override
     public String toString() {
-        return "Room [location=" + location + ", name=" + name + ", capacity=" + capacity + ", no=" + no + "]";
+        return "Room [no=" + no + ", location=" + location + ", name=" + name + ", capacity=" + capacity + "]";
     }
 
     public int getNo() {
@@ -30,29 +29,28 @@ public class Room {
     }
 
     public String getLocation() {
-		return location;
-	}
+        return location;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getCapacity() {
-		return capacity;
-	}
+    public int getCapacity() {
+        return capacity;
+    }
 
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-	
-	
-	
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+    
+    
 }

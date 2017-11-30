@@ -1,33 +1,32 @@
 package java100.app.control;
 
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.List;
 
-import java100.app.annotation.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java100.app.dao.MemberDao;
 import java100.app.domain.Member;
 @Component("/member")
 public class MemberController implements Controller {
     
+    // MemberDao는 인터페이스이다. 
+    // 따라서 MemberDao 인터페이스를 구현한 어떤 클래스라도 주입 받을 수 있다.
+    // 이것이 인터페이스를 사용하는 이유이다.
+    // 상황에 따라 다양한 DAO 구현체를 주입 받을 수 있기 때문이다.
+    // 현재는 App 클래스에서 MySQL DBMS를 사용하는 구현체를 주입해 주지만,
+    // 만약 고객사의 DBMS가 Oracle이라면 
+    // 그 Oracle을 사용하는 DAO를 주입해줄 것이다. 
+    @Autowired
     MemberDao memberDao;
-    
-    
-    
-    public void setMemberDao(MemberDao memberDao) {
-        this.memberDao = memberDao;
-    }
 
     @Override
     public void destroy() {}
     
     @Override
-    public void init() {
-    }
+    public void init() {}
     
-    // 실제 이 클래스가 오버라이딩 하는 메서드는 
-    // GenericController가 따른다고 한 Controller 인터페이스의 
-    // 추상 메서드이다.
     @Override    
     public void execute(Request request, Response response) {
         switch (request.getMenuPath()) {
@@ -42,81 +41,91 @@ public class MemberController implements Controller {
     }
     
     private void doList(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[회원 목록]");
         
         try {
+            
             List<Member> list = memberDao.selectList();
             
-            for(Member member : list) {
-                out.printf("%d, %s, %s, %s\n", member.getNo(), member.getName(), member.getEmail(), member.getCreateDate());
+            for (Member member : list) {
+                out.printf("%d, %s, %s, %s\n",
+                        member.getNo(),
+                        member.getName(), 
+                        member.getEmail(),
+                        member.getCreatedDate());
             }
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     }
     
     private void doAdd(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[회원 등록]");
         
         try {
+            
             Member member = new Member();
             member.setName(request.getParameter("name"));
             member.setEmail(request.getParameter("email"));
-            member.setPassword(request.getParameter("pwd"));
-            member.setCreateDate(new Date(System.currentTimeMillis()));
+            member.setPassword(request.getParameter("password"));
+            
             memberDao.insert(member);
             
             out.println("저장하였습니다.");
             
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
-    
     } 
     
     private void doView(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[회원 상세 정보]");
         
         try {
+            
             int no = Integer.parseInt(request.getParameter("no"));
-
             Member member = memberDao.selectOne(no);
+            
             if (member != null) {
                 out.printf("번호: %d\n", member.getNo());
                 out.printf("이름: %s\n", member.getName());
                 out.printf("이메일: %s\n", member.getEmail());
+                out.printf("등록일: %s\n", member.getCreatedDate());
             } else {
-                out.printf("'%d'의 성적 정보가 없습니다.\n", no);
+                out.printf("'%d'번의 회원 정보가 없습니다.\n", no); 
             }
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     } 
     
     private void doUpdate(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[회원 변경]");
         
         try {
             Member member = new Member();
+            member.setNo(Integer.parseInt(request.getParameter("no")));
             member.setName(request.getParameter("name"));
             member.setEmail(request.getParameter("email"));
-            member.setPassword(request.getParameter("pwd"));
-            member.setNo(Integer.parseInt(request.getParameter("no")));
+            member.setPassword(request.getParameter("password"));
             
-            if(memberDao.update(member) > 0) {
+            if (memberDao.update(member) > 0) {
                 out.println("변경하였습니다.");
             } else {
-                out.printf("'%s'의 성적 정보가 없습니다.\n", 
-                        request.getParameter("no"));
+                out.printf("'%d'번 회원의 정보가 없습니다.\n", member.getNo()); 
             }
             
         } catch (Exception e) {
@@ -126,25 +135,25 @@ public class MemberController implements Controller {
     }
     
     private void doDelete(Request request, Response response) {
+
         PrintWriter out = response.getWriter();
         out.println("[회원 삭제]");
         
         try {
+            
             int no = Integer.parseInt(request.getParameter("no"));
             
             if (memberDao.delete(no) > 0) {
-                out.println("삭제했습니다");
+                out.println("삭제했습니다.");
             } else {
-                out.printf("'%d'의 성적 정보가 없습니다.\n", no);
+                out.printf("'%d'번의 회원 정보가 없습니다.\n", no); 
             }
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println(e.getMessage());
+            e.printStackTrace(); // for developer
+            out.println(e.getMessage()); // for user
         }
     }
-    
-    
 }
 
 

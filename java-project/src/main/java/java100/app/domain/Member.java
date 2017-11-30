@@ -8,29 +8,20 @@ public class Member {
     protected String name;
     protected String email;
     protected String password;
-    protected Date createDate;
+    protected Date createdDate;
     
     public Member() {}
     
-    public Member(String name, String email, int no, Date createDate) {
+    public Member(int no, String name, String email) {
         this.no = no;
         this.name = name;
         this.email = email;
-        this.createDate = createDate;
     }
-    
+
     @Override
     public String toString() {
-        return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password + ", createDate="
-                + createDate + "]";
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+        return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password + ", createdDate="
+                + createdDate + "]";
     }
 
     public int getNo() {
@@ -39,6 +30,14 @@ public class Member {
 
     public void setNo(int no) {
         this.no = no;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getName() {
@@ -64,12 +63,14 @@ public class Member {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public void setDate(int i, Date date) {
-        // TODO Auto-generated method stub
-        
-    }
-    
     
 }
+
+
+
+
+
+
+
+
 
