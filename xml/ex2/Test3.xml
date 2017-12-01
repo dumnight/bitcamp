@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 엘리먼트 규칙 정의
+<!ELEMENT 타입 (#PCDATA)>
+ -->
+
+<!DOCTYPE books[
+<!ELEMENT books (#PCDATA)>
+]>
+
+<!-- 텍스트만 올수있다 -->
+<books><book></book></books>
+
+
+
+

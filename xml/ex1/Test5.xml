@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+
+<!--부모 태그와 자식 태그
+	-->
+	
+<teacher> <!-- teacher 입장에서는 student가 자식(child)태그이다 -->
+
+	<student> <!-- name age는 students의 자식이고 teacher의 자손태그이다-->
+		<name>ㅇㅇㅇㅇ</name> <!-- name과 age입장에서 teacher는 조상태그이다 -->
+		<age>22</age> <!-- name입장에서는 age는 형제태그다 -->
+		
+	</student>
+	
+</teacher>
+

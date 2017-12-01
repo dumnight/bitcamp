@@ -1,0 +1,14 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+
+<!--용어-->
+	
+<teacher> 
+	<student>
+		<name> <!-- 시작태그 -->
+			zzzzz <!-- 내용 -->
+		</name> <!-- 끝태그 -->
+
+	</student>	
+</teacher>
+

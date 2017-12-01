@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 엘리먼트 속성 정의 - 필수 선택 고정 
+	<!ATTLIST 태그명 
+		속성명 타입 #REQUIRED
+		속성명 타입 #IMPLIED
+		속성명 타입 #FIXED>	
+-->		
+
+<!-- book 자식태그로 book이 온다면 무슨 타입인지 알려줘야한다 -->
+<!DOCTYPE items [
+<!ELEMENT itmes (book)*> 
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book 
+	title  CDATA #REQUIRED
+	press  CDATA #IMPLIED
+	lang CDATA #FIXED 'dd'
+	price CDATA '1000'
+>
+]>
+<!-- 나열된 순서를 지켜야 한다 -->
+<items>
+	<book title="aaa" > title은 필수속성이다</book>
+	<book title="aaa"  press="bbb"> press는 선택 속성이다 생략가능</book>
+	<book title="aaa"  press="bbb" lang='dd'>
+		lang은 고정된 값을 갖는 속성이다
+		생략하면 설정된 값이 기본으로 사용된다
+		고정값이기 때문에 다른 값으로 변경할 수 없다
+		</book>
+	<book title="aaa"  press="bbb" lang='dd'>
+		price는 선택 속성이다. 기본 값이 설정되어 있기 떄문에 생략하면 그 값이 사용된다
+		</book>
+		<book title="aaa"  press="bbb" lang='dd'>
+		물론 FIXED가 아니기 때문에 다른 값으로 설정할 수 있다
+		</book>
+</items>
+
+
+
+
+

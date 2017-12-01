@@ -8,5 +8,4 @@
         <bean id="str2" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="Hello"/>
         </bean>
-        
 </beans>

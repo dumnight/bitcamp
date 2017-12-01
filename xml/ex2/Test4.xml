@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 엘리먼트 규칙 정의
+<!ELEMENT 타입 (#PCDATA)>
+ -->
+
+<!-- book 자식태그로 book이 온다면 무슨 타입인지 알려줘야한다-->
+<!DOCTYPE books[
+<!ELEMENT books (book)> 
+<!ELEMENT book (#PCDATA)>
+]>
+
+<books><book>aaa</book></books>
+
+
+
+

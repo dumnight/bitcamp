@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 엘리먼트 속성 정의 
+	<!ATTLIST 태그명 속성명 타입 옵션>
+	
+-->
+
+<!-- book 자식태그로 book이 온다면 무슨 타입인지 알려줘야한다 -->
+<!DOCTYPE items [
+<!ELEMENT itmes (book)*> 
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book 
+	title  CDATA #REQUIRED
+	>
+]>
+<!-- 나열된 순서를 지켜야 한다 -->
+<items>
+	<book title="aaa" >
+		ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㄴㄴㄴㄴㄴㄴ
+	</book>
+</items>
+
+
+
+
+

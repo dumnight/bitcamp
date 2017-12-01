@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 엘리먼트 나열 
+	<!ELEMENT 이름 (태그1 | 태그2 | 태그3)>
+	
+-->
+
+<!-- book 자식태그로 book이 온다면 무슨 타입인지 알려줘야한다 -->
+<!DOCTYPE items[
+<!ELEMENT itmes (book|dvd)*> 
+<!ELEMENT book (title,author+,press,page,description?,photo*,(cd|tape|usb)?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT press (#PCDATA)>
+<!ELEMENT page (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT photo (#PCDATA)>
+<!ELEMENT cd EMPTY>
+<!ELEMENT tape EMPTY>
+<!ELEMENT usb EMPTY>
+<!ELEMENT dvd (title,price)>
+<!ELEMENT price (#PCDATA)>
+]>
+<!-- 나열된 순서를 지켜야 한다 -->
+<items>
+	<book>
+		<title>asd</title>
+		<author>ddd</author>
+		<press>ccc</press>
+		<page>asd</page>
+	</book>
+	<dvd>
+		<title>aaaa</title>
+		<price>2322</price>
+	</dvd>
+	<book>
+		<title>asd</title>
+		<author>ddd</author>
+		<press>ccc</press>
+		<page>asd</page>
+	</book>
+	<book>
+		<title>asd</title>
+		<author>ddd</author>
+		<press>ccc</press>
+		<page>asd</page>
+	</book>
+	<dvd>
+		<title>aaaa</title>
+		<price>2322</price>
+	</dvd>
+</items>
+
+
+
+
+

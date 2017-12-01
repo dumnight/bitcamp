@@ -1,0 +1,15 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+
+<!--태그 나열하기-->
+	
+<teacher> 
+	<!-- 태그끼리 서로 겹쳐 놓을 수 없다 
+		 XML은 항상 태그 사이의 관계가 명확해야 한다 
+		 즉 부모 자식간의 관계가 명확해야 한다-->
+	<b>ABCDEFGH<i>IJKLMNOPQ</i></b><i>RSTUVWXYZ</i>
+	<!--  오류 -->
+	<b>ABCDEFGH<i>IJKLMNOPQ</b>RSTUVWXYZ</i>
+	
+</teacher>
+

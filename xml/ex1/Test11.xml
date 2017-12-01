@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--  태그와 엘리먼트(element)
+일반적으로 태그라 부르고 기술문서에선 엘리먼트라 표현한다
+태그 == 엘리먼트
+시작 엘리먼트 끝 엘리먼트라는 용어는 사용하지 않는다
+	-->
+
+	
+<books>
+	<book>
+		<title>개발의정석</title>
+		<author>누군가</author>
+		<page>1</page>
+		<isbn>123</isbn>
+		<language>외계어</language>
+		<press>출판사</press>
+		<description>봐도 이해안됨</description>
+	</book>
+	
+	<!-- 위의 book 태그를 문서에서는 book 엘리먼트로 표현한다 -->
+	
+</books>

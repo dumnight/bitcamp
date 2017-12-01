@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 외부 DTD 파일 생성 및 사용
+	<!DOCTYPE 루트태그 SYSTEM "URI">
+	DTD를 외부에 별도의 파일로 정의하면 여러 XML문서에서참조할수 있기 떄문에
+	유지보수에 좋다
+	
+	문법
+	<!DOCTYPE 루트태그 PUBLIC "DTD정보" "URI">
+	<!DOCTYPE 루트태그 SYSTEM "URI">
+	
+	DTD정보
+	"국제공인여부//DTD 유지보수 조직//DTD 이름//언어"
+	
+	국제공인여부:
+	+(국제공인), -(비공인단체)	
+	
+	예)
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0.1 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+	
+-->		
+<!DOCTYPE items SYSTEM "Test1.dtd">
+
+<items>
+	<author id="a001" name="홍길동"/>
+	<author id="a002" name="임꺽정"/>
+	<author id="a003" name="유관순"/>
+	
+	<press id="p001" name="비트출판사"/>
+	<press id="p002" name="위키북스"/>
+	<press id="p003" name="프리랙"/>
+</items>
+
+
+
+
