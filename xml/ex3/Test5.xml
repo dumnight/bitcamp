@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 엘리먼트 속성 타입 
 	<!ATTLIST 태그명 
-		속성명 IDREF #REQUIRED
-		속성명 IDREFS #REQUIRED
+		속성명 NMTOKEN #REQUIRED
+		속성명 NMTOKENS #REQUIRED
 -->		
 
 <!-- book 자식태그로 book이 온다면 무슨 타입인지 알려줘야한다 -->

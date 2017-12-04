@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- 셋터를 호출할 때 객체 생성하기
+	   Car c1 = new Car();
+	   Engine temp = new Engine(); 
+	   temp.setName("엔진);
+	   temp.setCc(5555);
+	   temp.setValve(16);
+	   c1.setEngine(temp); 
+	    --> 
+
+		
+	<bean id="c1" class="bitcamp.java100.ch20.ex3.Car">
+		<property name="engine"> <!-- 셋터메서드 호출 -->
+	<bean class="bitcamp.java100.ch20.ex3.Engine" 
+		p:name="엔진" p:cc="5000" p:valve="16"/> <!-- 셋터메서드 호출전 bean클래스 생성뒤 값을 셋터메서드에 넣는다 -->
+		</property>
+	</bean>
+	
+	   <bean id="c2" class="bitcamp.java100.ch20.ex3.Car">
+        <property name="engine"> <!-- 셋터메서드 호출 -->
+    <bean class="bitcamp.java100.ch20.ex3.Engine"
+        p:name="엔진2" p:cc="5500" p:valve="14"/> <!-- 위의 bean클래스와 값이 같아도 서로 다른 bean으로 분류된다 -->
+        </property>
+    </bean>
+
+			
+</beans>

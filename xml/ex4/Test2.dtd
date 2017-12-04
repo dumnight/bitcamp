@@ -5,7 +5,7 @@
 -->
 <!ENTITY % string "CDATA #REQUIRED">
 
-<!ENTITY % coreattrs 
+<!ENTITY % coreattrs
 	"name %string;
 	id ID #REQUIRED"
 	>

@@ -6,7 +6,6 @@
 	
 	
 	<!-- 셋터 호출 
-	
 		Engine e1 = new Engine();
 		e1.setName("엔진");
 		e1.setCc(3000);

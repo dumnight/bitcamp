@@ -1,4 +1,4 @@
-package bitcamp.java100.ch20.ex3;
+package bitcamp.java100.ch20.ex4;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,6 +7,7 @@ public class Test3 {
         
         ClassPathXmlApplicationContext appCtx = 
                 new ClassPathXmlApplicationContext(
-                        "bitcamp/java100/ch20/ex3/application-context3.xml");
+                        "bitcamp/java100/ch20/ex4/application-context3.xml");
+        
     }
 }
