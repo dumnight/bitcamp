@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- XMl설정 파일에 객체 생성 태그를 넣지 않고 대신에 각 클래스에
+         @Component를 붙인다.
+         대신 같은 타입의 객체를 여러개 생성할 수 없다. -->
+    <context:component-scan base-package="bitcamp.java100.ch20.ex14"/>
+     <!-- base-package는 어느 패키지에 있는 @Component를 처리할 지 설정하는 것이다 -->
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
