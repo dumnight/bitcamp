@@ -28,7 +28,7 @@ public class AppInitServlet implements Servlet {
     @Bean("dataSource")
     DataSource getDataSource() {
         DataSource ds = new DataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setDriverClassName("com.mysql.jdbc.Driver"); 
         ds.setUrl("jdbc:mysql://localhost:3306/studydb");
         ds.setUsername("study");
         ds.setPassword("1111");
