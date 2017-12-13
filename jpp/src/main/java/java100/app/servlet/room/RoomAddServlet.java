@@ -22,7 +22,13 @@ public class RoomAddServlet extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         
         PrintWriter out = response.getWriter();
-        out.println("[강의실 등록]");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>강의실관리</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>강의실 등록 결과</h1>");
         
         try {
             Room room = new Room();
@@ -32,12 +38,15 @@ public class RoomAddServlet extends HttpServlet {
             
             roomDao.insert(room);
             
-            out.println("저장하였습니다.");
+            out.println("<p>저장하였습니다.</p>");
             
         } catch (Exception e) {
             e.printStackTrace(); // for developer
             out.println(e.getMessage()); // for user
         }
+        out.println("<p><a href='list'>목록</a></p>");
+        out.println("</body>");
+        out.println("</html>");
     } 
     
 }

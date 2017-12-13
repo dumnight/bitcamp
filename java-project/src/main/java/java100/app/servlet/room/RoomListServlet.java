@@ -18,30 +18,67 @@ import java100.app.listener.ContextLoaderListener;
 public class RoomListServlet extends HttpServlet {
    
     
-    public void service(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         
         RoomDao roomDao = ContextLoaderListener.iocContainer.getBean(RoomDao.class);
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
         
         PrintWriter out = response.getWriter();
-        out.println("[강의실 목록]");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>강의실관리</title>");
+        out.println("<link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>");
+        out.println("<style>");
+        out.println(".container{");
+        out.println("   width: 680px");
+        out.println("}");
+        out.println("</style>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<div class='container'>");
+        out.println("<h1>강의실 목록</h1>");
+        out.println("<p><a href='add' class='btn btn-primary btn-sm'>추가</a></p>");
+        
+        out.println("<table class='table table-hover'>");
+        out.println("<thead>");
+        out.println("<tr>");
+        out.println("<th>번호</th><th>지역</th><th>이름</th><th>수용인원</th><th>삭제</th>");
+        out.println("</tr>");
+        out.println("</thead>");
+        out.println("<tbody>");
         
         try {
             List<Room> list = roomDao.selectList();
             
+            
             for (Room room : list) {
-                out.printf("%d, %s, %s, %d\n", 
+                out.printf("<tr><td>%d</td>"
+                        + "<td>%s</td><td>"
+                        + "%s</td>"
+                        + "<td>%d</td><td>"
+                        + "<a href='delete?no=%d' class='btn btn-danger btn-sm'>삭제</a></tr>\n", 
                         room.getNo(),
                         room.getLocation(),
                         room.getName(),
-                        room.getCapacity());
+                        room.getCapacity(),
+                        room.getNo());
+                
             }
+            
             
         } catch (Exception e) {
             e.printStackTrace(); // for developer
             out.println(e.getMessage()); // for user
         }
+        
+        
+        out.println("</tbody>");
+        out.println("</table>");
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
     }
     
     

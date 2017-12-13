@@ -15,7 +15,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         
         switch (request.getPathInfo()) {
         case "/hi":
@@ -25,19 +25,46 @@ public class HelloServlet extends HttpServlet {
             this.doHi2(request, response);
             break;
         default:
-            response.getWriter().println("해당 명령이 없습니다.");
+            doError(request, response);
         }
+    }
+    private void doError(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>요청오류</h1>");
+        out.println("<p>요청하신 URL의 서비스를 찾을 수 없습니다</p>");
+        out.println("</body>");
+        out.println("</html>");
     }
 
     private void doHi(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.println("하이1");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>Hi</h1>");
+        out.println("</body>");
+        out.println("</html>");
     }
 
     private void doHi2(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
         PrintWriter out = response.getWriter();
-        out.println("하이2");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>hi2</h1>");
+        out.println("</body>");
+        out.println("</html>");
 
     }
+    
 
 }

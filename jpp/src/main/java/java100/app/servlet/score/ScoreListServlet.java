@@ -18,18 +18,38 @@ import java100.app.listener.ContextLoaderListener;
 @WebServlet(urlPatterns="/score/list")  // 이 클래스의 객체를 자동 생성해야 함을 표시! 
 public class ScoreListServlet extends HttpServlet {
 
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         ScoreDao scoreDao = ContextLoaderListener.iocContainer.getBean(ScoreDao.class);
         response.setContentType("text/plain;charset=UTF-8");
         
         PrintWriter out = response.getWriter();
-        out.println("[성적 목록]");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>성적관리</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>성적 목록</h1>");
+
+        out.println("<p><a href='add'>추가</a></p>");
+        
+        out.println("<table>");
+        out.println("<thead>");
+        out.println("<tr>");
+        out.println("<th>번호</th><th>이름</th><th>합계</th><th>평균</th>");
+        out.println("</tr>");
+        out.println("</thead>");
+        out.println("<tbody>");
         
         try {
             List<Score> list = scoreDao.selectList();
             
             for (Score score : list) {
-                out.printf("%4d, %-4s, %4d, %6.1f\n",
+                out.printf("<tr><td>%d</td><td>"
+                        + "<a href='view?no=%d'>%s</a>"
+                        + "</td><td>%d</td><td>%3.1f</td></tr>\n",
+                        score.getNo(),
                         score.getNo(),
                         score.getName(), 
                         score.getSum(), 
@@ -40,6 +60,10 @@ public class ScoreListServlet extends HttpServlet {
             e.printStackTrace(); // for developer
             out.println(e.getMessage()); // for user
         }
+        out.println("</tbody>");
+        out.println("</table>");
+        out.println("</body>");
+        out.println("</html>");
     }
 
    
