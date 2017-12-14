@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java100.app.util.DataSource;
 
-public class ContextLoaderListener implements ServletContextListener{
+public class ContextLoaderListener implements ServletContextListener {
     
     public static AnnotationConfigApplicationContext iocContainer;
     
