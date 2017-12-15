@@ -7,7 +7,7 @@
     trimDirectiveWhitespaces="true"%>
 
 <% BoardDao boardDao = ContextLoaderListener.iocContainer.getBean(BoardDao.class);
-PrintWriter out2 = new PrintWriter(out);%>
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +17,7 @@ PrintWriter out2 = new PrintWriter(out);%>
 </head>
 <body>
 <div class='container'>
- <%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>게시물 상세 정보</h1>
 <%try {
     int no = Integer.parseInt(request.getParameter("no"));
@@ -33,57 +29,56 @@ PrintWriter out2 = new PrintWriter(out);%>
 <div class='form-group row'>
 <label for='no' class='col-sm-2 col-form-label'>번호</label>
 <div class='col-sm-10'>
-<%out2.printf("<input class='form-control' readonly id='no' type='number' name='no' value='%d'>\n", board.getNo());%>
+<input class='form-control' readonly id='no' type='number' name='no' value=<%=board.getNo() %>>
 </div>
 </div>
 <div class='form-group row'>
 <label for='title' class='col-sm-2 col-form-label'>제목</label>
 <div class='col-sm-10'>
-<%out2.printf("<input class='form-control' id='title' type='text' name='title' value='%s'>\n", board.getTitle());%>
+<input class='form-control' id='title' type='text' name='title' value=<%=board.getTitle() %>>
 </div>
 </div>
 <div class='form-group row'>
 <label for='content' class='col-sm-2 col-form-label'>내용</label>
 <div class='col-sm-10'>
-<%out2.printf("<input class='form-control' id='content' type='text' name='content' value='%s'>\n", board.getContent());%>
+<input class='form-control' id='content' type='text' name='content' value=<%=board.getContent() %>>
 </div>
 </div>
 <div class='form-group row'>
 <label for='date' class='col-sm-2 col-form-label'>등록일</label>
 <div class='col-sm-10'>
-<%out2.printf("<input class='form-control' readonly id='date' type='date' name='date' value='%s'>\n", board.getRegDate()); %>
+<input class='form-control' readonly id='date' type='date' name='date' value=<%=board.getRegDate() %>>
 </div>
 </div>
 <div class='form-group row'>
 <label for='count' class='col-sm-2 col-form-label'>조회수</label>
 <div class='col-sm-10'>
-<%out2.printf("<input class='form-control' readonly id='count' type='number' name='count' value='%d'>\n", board.getViewCount()); %>
+<input class='form-control' readonly id='count' type='number' name='count' value=<%=board.getViewCount() %>>
 </div>
 </div>
 <div class='form-group row'>
 <div class='col-sm-10'>
 <button class='btn btn-primary btn-sm'>변경</button>
-<%out2.printf("<a href='delete.jsp?no=%d' class='btn btn-danger btn-sm'>삭제</a>\n", board.getNo()); %>
+<a href='delete.jsp?no=<%=board.getNo() %>' class='btn btn-danger btn-sm'>삭제</a>
 </div>
 </div>
 </form>
 <%} else {
-    out2.printf("'%d'번의 게시물 정보가 없습니다.\n", no);
+%>
+    <p><%=no %> 번의 게시물 정보가 없습니다.</p>
+    <%
 }
 
 } catch (Exception e) {
-e.printStackTrace(); // for developer
-out.println(e.getMessage()); // for user
+e.printStackTrace();
+%>  
+<%=e.getMessage()%>
+<%
 } %>
 
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>
 </body>
 </html>
 

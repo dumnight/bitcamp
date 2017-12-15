@@ -8,7 +8,7 @@
     trimDirectiveWhitespaces="true"%>
 
 <% RoomDao roomDao = ContextLoaderListener.iocContainer.getBean(RoomDao.class);
-PrintWriter out2 = new PrintWriter(out);%>
+%>
 
 
 <!DOCTYPE html>
@@ -20,11 +20,7 @@ PrintWriter out2 = new PrintWriter(out);%>
 </head>
 <body>
 <div class='container'>
- <%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>강의실 목록</h1>
 <p><a href='form.jsp' class='btn btn-primary btn-sm'>추가</a></p>
 <table class='table table-hover'>
@@ -40,35 +36,29 @@ try {
     
     
     for (Room room : list) {
-        out2.printf("<tr><td>%d</td>"
-                + "<td>%s</td><td>"
-                + "%s</td>"
-                + "<td>%d</td><td>"
-                + "<a href='delete.jsp?no=%d' class='btn btn-danger btn-sm'>삭제</a></tr>\n", 
-                room.getNo(),
-                room.getLocation(),
-                room.getName(),
-                room.getCapacity(),
-                room.getNo());
-        
+        %>
+        <tr>
+            <td><%=room.getNo() %></td>
+            <td><%=room.getLocation() %></td>
+            <td><%=room.getCapacity() %></td>
+            <td><%=room.getNo() %></td>
+            <td><a href='delete.jsp?no=<%=room.getNo() %>' class='btn btn-danger btn-sm'>삭제</a></tr> 
+<%        
     }
     
     
 } catch (Exception e) {
     e.printStackTrace();
-    out.println(e.getMessage());
+    %>  
+    <%=e.getMessage()%>
+    <%
 }
 %>
 
 </tbody>
 </table>
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>>
 </body>
 </html>

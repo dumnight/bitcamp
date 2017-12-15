@@ -6,8 +6,7 @@
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 
-<% BoardDao boardDao = ContextLoaderListener.iocContainer.getBean(BoardDao.class);
-PrintWriter out2 = new PrintWriter(out);%>
+<% BoardDao boardDao = ContextLoaderListener.iocContainer.getBean(BoardDao.class);%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +16,7 @@ PrintWriter out2 = new PrintWriter(out);%>
 </head>
 <body>
 <div class='container'>
-<%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>게시물 변경</h1>
 <%try {
     Board board = new Board();
@@ -30,25 +25,26 @@ PrintWriter out2 = new PrintWriter(out);%>
     board.setContent(request.getParameter("content"));
     
     if (boardDao.update(board) > 0) {
-        out.println("<p>변경하였습니다.</p>");
+        %>
+        <p>변경하였습니다.</p>
+        <%
     } else {
-        out2.printf("<p>'%s'번 게시물이 없습니다.</p>\n", board.getNo());
+        %>
+        <p><%=board.getNo() %>번 게시물이 없습니다.</p>
+        <%
     }
     
 } catch (Exception e) {
     e.printStackTrace(); 
-    out.println(e.getMessage());
+    %>  
+    <%=e.getMessage()%>
+    <%
 }
 %>
 
 <p><a href='list.jsp' class='btn btn-primary btn-sm'>목록</a></p>
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>
 </body>
 </html>

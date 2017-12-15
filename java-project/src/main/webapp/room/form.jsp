@@ -11,11 +11,7 @@
 </head>
 <body>
 <div class='container'>
- <%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>강의실 등록</h1>
 <form action='add.jsp' method='post'>
 <div class='form-group row'>
@@ -33,21 +29,16 @@
 <div class='form-group row'>
 <label for='capacity' class='col-sm-2 col-form-label'>수용인원</label>
 <div class='col-sm-10'>
-<input class='form-control' id='capacity' type='text' name='capacity'>
+<input class='form-control' id='capacity' type='number' name='capacity'>
 </div>
 </div>
 
 
 <button class='btn btn-primary btn-sm'>추가</button>
 </form>
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>
 </body>
 </html>
 

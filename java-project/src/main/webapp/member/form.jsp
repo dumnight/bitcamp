@@ -10,11 +10,7 @@
 </head>
 <body>
 <div class='container'>
- <%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>새 회원 등록</h1>
 <form action='add.jsp' method='post'>
 <div class='form-group row'>
@@ -40,13 +36,9 @@
 </div>
 <button class='btn btn-primary btn-sm'>추가</button>
 </form>
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>
 </body>
 </html>

@@ -20,11 +20,7 @@ PrintWriter out2 = new PrintWriter(out);%>
 </head>
 <body>
 <div class='container'>
-<%
- out.flush();
- RequestDispatcher rd = request.getRequestDispatcher("/header");
-        rd.include(request, response); 
-        %>
+<jsp:include page="/header.jsp"/>
 <h1>강의실 등록 결과</h1>
 <%
 try {
@@ -34,24 +30,21 @@ try {
     room.setCapacity(Integer.parseInt(request.getParameter("capacity")));
     
     roomDao.insert(room);
-    
-    out.println("<p>저장하였습니다.</p>");
-    
+%>    
+    <p>저장하였습니다.</p>
+<%    
 } catch (Exception e) {
     e.printStackTrace();
-    out.println(e.getMessage()); 
+    %>  
+    <%=e.getMessage()%>
+    <%
 }
 %>
 
-<p>저장하였습니다.</p>
+
 <p><a href='list.jsp' class='btn btn-primary btn-sm'>목록</a></p>
-<%
-out.flush();
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response); %>
+<jsp:include page="/footer.jsp"/>
 </div>
-<script src='../node_modules/jquery/dist/jquery.slim.min.js'></script>
-<script src='../node_modules/popper.js/dist/umd/popper.min.js'></script>
-<script src='../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<%@ include file="../jslib.txt" %>
 </body>
 </html>
