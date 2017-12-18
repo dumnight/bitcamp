@@ -1,14 +1,7 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java100.app.domain.Member"%>
-<%@page import="java100.app.dao.MemberDao"%>
-<%@page import="java100.app.listener.ContextLoaderListener"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-<% MemberDao memberDao = ContextLoaderListener.iocContainer.getBean(MemberDao.class);
-PrintWriter out2 = new PrintWriter(out);
-    %>
-
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <title>회원관리</title>
@@ -19,27 +12,12 @@ PrintWriter out2 = new PrintWriter(out);
 <div class='container'>
 <jsp:include page="/header.jsp"/>
 <h1>회원 삭제</h1>
-<jsp:useBean id="count" type="java.lang.Integer" scope="request"></jsp:useBean>
-<%
-try {
-    
-    if (count > 0) {
-        %>
+<c:if test="${count > 0}" >
         <p>삭제했습니다.</p>
-        <%
-    } else {
-        %>
+</c:if>        
+<c:if test="${count == 0}">
         <p>'${param.no}'번의 회원 정보가 없습니다.</p>
-        <%
-    }
-    
-} catch (Exception e) {
-    e.printStackTrace(); 
-    %>  
-    <%=e.getMessage()%>
-    <%
-}
-%>
+</c:if>
 
 <p><a href='list' class='btn btn-primary btn-sm'>목록</a></p>
 <jsp:include page="/footer.jsp"/>

@@ -47,7 +47,11 @@ dependencies {
  
     // Spring IoC 컨테이너 라이브러리
     compile 'org.springframework:spring-context:5.0.2.RELEASE'
- 
+    
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
+    
     compile 'com.google.guava:guava:22.0'
     testCompile 'junit:junit:4.12'
 }

@@ -1,8 +1,7 @@
-<%@page import="java100.app.domain.Board"%>
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,12 +14,7 @@
 <div class='container'>
 <jsp:include page="/header.jsp"/>
 <h1>게시물 상세 정보</h1>
-<jsp:useBean id="board" type="java100.app.domain.Board" scope="request"></jsp:useBean>
-<%try {
-    
-    
-    if (board != null) {
-        %>
+<c:if test="${not empty board}">
 
 <form action='update' method='post'>
 <div class='form-group row'>
@@ -60,18 +54,10 @@
 </div>
 </div>
 </form>
-<%} else {
-%>
+</c:if>
+<c:if test="${empty board}">
     <p>'${param.no}' 번의 게시물 정보가 없습니다.</p>
-    <%
-}
-
-} catch (Exception e) {
-e.printStackTrace();
-%>  
-<%=e.getMessage()%>
-<%
-} %>
+</c:if>
 
 <jsp:include page="/footer.jsp"/>
 </div>
