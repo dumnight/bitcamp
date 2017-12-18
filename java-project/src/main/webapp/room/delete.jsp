@@ -1,14 +1,8 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.util.List"%>
 <%@page import="java100.app.domain.Room"%>
-<%@page import="java100.app.dao.RoomDao"%>
-<%@page import="java100.app.listener.ContextLoaderListener"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 
-    <% RoomDao roomDao = ContextLoaderListener.iocContainer.getBean(RoomDao.class);
-%>
 
 
 <!DOCTYPE html>
@@ -22,18 +16,18 @@
 <div class='container'>
 <jsp:include page="/header.jsp"/>
 <h1>강의실 삭제</h1>
+<jsp:useBean id="count" type="java.lang.Integer" scope="request"></jsp:useBean>
 <%
 try {
     
-    int no = Integer.parseInt(request.getParameter("no"));
     
-    if (roomDao.delete(no) > 0) {
+    if (count > 0) {
 %>        
         <p>삭제했습니다.</p>
 <%
     } else {
 %>
-        <p><%=no %>의 강의실 정보가 없습니다.<p>
+        <p>'${param.no}의 강의실 정보가 없습니다.<p>
 <% 
     }
     
@@ -45,7 +39,7 @@ try {
 }
 %>
 
-<p><a href='list.jsp' class='btn btn-primary btn-sm'>목록</a></p>
+<p><a href='list' class='btn btn-primary btn-sm'>목록</a></p>
 <jsp:include page="/footer.jsp"/>
 </div>
 <%@ include file="../jslib.txt" %>

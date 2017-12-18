@@ -19,18 +19,17 @@ PrintWriter out2 = new PrintWriter(out);
 <div class='container'>
 <jsp:include page="/header.jsp"/>
 <h1>회원 삭제</h1>
+<jsp:useBean id="count" type="java.lang.Integer" scope="request"></jsp:useBean>
 <%
 try {
     
-    int no = Integer.parseInt(request.getParameter("no"));
-    
-    if (memberDao.delete(no) > 0) {
+    if (count > 0) {
         %>
         <p>삭제했습니다.</p>
         <%
     } else {
         %>
-        <p><%=no %>번의 회원 정보가 없습니다.</p>
+        <p>'${param.no}'번의 회원 정보가 없습니다.</p>
         <%
     }
     
@@ -42,7 +41,7 @@ try {
 }
 %>
 
-<p><a href='list.jsp' class='btn btn-primary btn-sm'>목록</a></p>
+<p><a href='list' class='btn btn-primary btn-sm'>목록</a></p>
 <jsp:include page="/footer.jsp"/>
 </div>
 <%@ include file="../jslib.txt" %>
