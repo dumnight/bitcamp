@@ -16,7 +16,7 @@
 <h1>게시물 상세 정보</h1>
 <c:if test="${not empty board}">
 
-<form action='update' method='post'>
+<form action='update.do' method='post'>
 <div class='form-group row'>
 <label for='no' class='col-sm-2 col-form-label'>번호</label>
 <div class='col-sm-10'>
@@ -50,7 +50,7 @@
 <div class='form-group row'>
 <div class='col-sm-10'>
 <button class='btn btn-primary btn-sm'>변경</button>
-<a href='delete?no=${board.no}' class='btn btn-danger btn-sm'>삭제</a>
+<a href='delete.do?no=${board.no}' class='btn btn-danger btn-sm'>삭제</a>
 </div>
 </div>
 </form>

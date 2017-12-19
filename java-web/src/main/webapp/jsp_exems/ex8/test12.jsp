@@ -29,6 +29,27 @@ true &amp;&amp; true = ${true && true}<br>
 true &amp;&amp; false = ${true && false}<br>
 true || true = ${true || true}<br>
 true || false = ${true || false}<br>
+!true = ${!true}<br>
+not true = ${not true}<br>
+
+<h3>관계 연산자</h3>
+3 == 5 = ${3 == 5}<br>
+3 eq 5 = ${3 eq 5}<br>
+
+3 != 5 = ${3 != 5}<br>
+3 ne 5 = ${3 ne 5}<br>
+
+3 > 5 = ${3 > 5}<br>
+3 gt 5 = ${3 gt 5}<br>
+
+3 >= 5 = ${3 >= 5}<br>
+3 ge 5 = ${3 ge 5}<br>
+
+3 < 5 = ${3 < 5}<br>
+3 lt 5 = ${3 lt 5}<br>
+
+3 <= 5 = ${3 <= 5}<br>
+3 le 5 = ${3 le 5}<br>
 
 <h3>empty</h3>
 <% pageContext.setAttribute("money", 10000); %>
