@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
-import java100.app.control.PageController;
+import java100.app.annotation.RequestMapping;
 
 @Component("/room/form")
-public class RoomFormServlet implements PageController {
+public class RoomFormServlet {
 
-    @Override
-    public String service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @RequestMapping
+    public String form(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         return "/room/form.jsp";
         

@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java100.app.control.PageController;
+import java100.app.annotation.RequestMapping;
 import java100.app.dao.BoardDao;
+import java100.app.domain.Board;
 
 @Component("/board/delete")
-public class BoardDeleteServlet implements PageController {
+public class BoardDeleteServlet {
 
     @Autowired BoardDao boardDao;
     
-    @Override
-    public String service(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping
+    public String delete(Board board, HttpServletRequest request, HttpServletResponse response) throws Exception {
         
-        int no = Integer.parseInt(request.getParameter("no"));
-        boardDao.delete(no);
+        boardDao.delete(board.getNo());
 
         return "redirect:list.do";
         

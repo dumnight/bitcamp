@@ -7,22 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java100.app.control.PageController;
+import java100.app.annotation.RequestMapping;
 import java100.app.dao.MemberDao;
 import java100.app.domain.Member;
 
 @Component("/member/add")
-public class MemberAddServlet implements PageController {
+public class MemberAddServlet  {
 
     @Autowired MemberDao memberDao;
     
-    @Override
-    public String service(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping
+    public String add(
+            Member member,
+            HttpServletRequest request, HttpServletResponse response) throws Exception {
         
-        Member member = new Member();
-        member.setName(request.getParameter("name"));
-        member.setEmail(request.getParameter("email"));
-        member.setPassword(request.getParameter("password"));
         
         memberDao.insert(member);
         

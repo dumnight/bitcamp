@@ -17,7 +17,7 @@
 
 <h3>if 태그</h3>
 <p>조건에 따라 실행 여부를 결정하는 태그이다<br>
-&lt;c:ㅑㄹ  scope="page|request|session|application"/><br>
+&lt;c:if  scope="page|request|session|application"/><br>
 </p>
 
 <c:set var="name" value="홍길동" scope="page"/>
