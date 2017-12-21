@@ -6,19 +6,9 @@
   version="3.1"
   metadata-complete="false">
   
-   <context-param> 
-        <param-name>contextConfigLocation</param-name>
-        <param-value>java100.app.AppConfig</param-value>
-    </context-param>
-  
-  <!-- 배치할 리스너 정보를 등록한다 -->
-  <listener>
-    <listener-class>java100.app.listener.ContextLoaderListener</listener-class>
-  </listener>
-  
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>java100.app.filter.CharacterEncodingFilter</filter-class>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
         <param-name>encoding</param-name>
         <param-value>UTF-8</param-value>
@@ -29,5 +19,32 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>*</url-pattern>
   </filter-mapping>
+  
+  <servlet>
+        <servlet-name>dispatch</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 스프링 WebMVC가 사용할 ioc컨테이너를 설정한다.
+             지정하지 않으면 WmlWebApplicationContext가 사용된다 -->
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+        
+        <!--위에서 지정한 ioc 컨테이너가 사용할 설정 정보를 지정한다.
+            XmlWebApplicationContext인 경우 *.xml파일의 경로를 지정한다.
+            AnnotationConfigWebApplicationContext인 경우
+            @Configuration 애노테이션이 붙은 자바 클래스 이름을 지정한다-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>java100.app.AppConfig</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatch</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+  
 </web-app>
     
