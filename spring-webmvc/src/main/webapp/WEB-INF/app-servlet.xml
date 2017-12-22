@@ -11,5 +11,25 @@
 
     <context:component-scan base-package="java100.app.web.v02"/>
 
-
+    <!-- 모든 페이지 컨트롤러에서 사용할 파라미터 변환기를 꼽는다 -->
+    
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="java100.app.web.v02.Test12_WebBindingInitializer"/>
+        </property>
+    </bean>
+    
+    <!-- 멀티 파트 형식으로 전송된 데이터를 처리할 객체를 등록한다 -->
+    <!-- 방법1: Apache의 Common fileupload 라이브러리를 사용할객체
+    <bean id="multipartResolver" 
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5000000"/>
+    </bean>
+     -->
+     <!-- 방법2: Servlet3.0부터 제공된 파일 업로드 기능을 이용한 객체 -->
+     <bean id="multipartReslover" 
+            class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+     </bean>
+     
+    
 </beans>

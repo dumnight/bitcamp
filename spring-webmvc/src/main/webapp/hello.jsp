@@ -8,8 +8,6 @@
 </head>
 <body>
 <h1>안녕하세요!</h1>
-<form action="/spring-webmvc/v02/test04.html" method="post">
-<button>뒤로가기</button>
 </form>
 </body>
 </html>
