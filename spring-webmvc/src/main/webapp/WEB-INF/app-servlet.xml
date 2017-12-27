@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="java100.app.web.v02" />
+	<context:component-scan base-package="java100.app.web.v03" />
 
 	<!-- 모든 페이지 컨트롤러에서 사용할 파라미터 변환기를 꼽는다 -->
 
@@ -23,7 +23,9 @@
 		<property name="messageConverters">
 			<list>
 			     <!-- 클라이언트가 보낸 데이터의 Content-Type이 
-			     application/json일 때 자바 객체로 변환해주는 컨버터 -->
+			     application/json일 때 자바 객체로 변환해주는 컨버터 
+			     또한 요청핸들러가 리턴하는 객체를 application/json 형식에 문자열로 변환해주는 작업도
+			     함께 수행한다.-->
 			     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 			     <!--  text/plain 데이터를 String으로 변환해주는 컨버터 -->
 			     <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
@@ -40,6 +42,15 @@
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</bean>
 	
+	<!-- 기존의 ViewResolver를 교체한다 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- JSTL을 사용할 경우 추가 -->
+	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	    <!-- 요청 핸들러가 리턴한 값에 앞뒤에 붙일 텍스트이다
+	         프론트 컨트롤러는 이 값을 가지고 뷰를 실행한다. -->
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
 
 </beans>

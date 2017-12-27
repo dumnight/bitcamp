@@ -1,8 +1,10 @@
-//요청 핸들러의 리턴값
+//요청 핸들러의 리턴값 - View URL 리턴하기
 package java100.app.web.v03;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 @Controller
 @RequestMapping("/v03/test01")
@@ -37,5 +39,19 @@ public class Test01 {
     @RequestMapping("/m2")
     public void m2() {
         System.out.println("Test01.m2()...");
+    }
+    
+    //URL 정보를 객체에 담아서 리턴하기
+    
+    @RequestMapping("/m3")
+    public View m3() {
+        System.out.println("Test01.m3()...");
+        
+        //다음과 같이 직접 JSP URL 경로를 VIEW 객체에 담아 리턴할 수 있다.
+        //이런 경우 InternalResourceVIewREsolver를 경유하지 않는다.
+        //객체에 저장된 URL을 바로 실행한다
+        //따라서 완전한 URL 정보를 리턴해야 한
+        View view = new InternalResourceView("/v03/test01/m3.jsp");
+        return view;
     }
 }
