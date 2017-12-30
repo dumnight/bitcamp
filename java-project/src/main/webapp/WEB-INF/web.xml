@@ -25,10 +25,6 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- 스프링 WebMVC가 사용할 ioc컨테이너를 설정한다.
              지정하지 않으면 WmlWebApplicationContext가 사용된다 -->
-        <init-param>
-            <param-name>contextClass</param-name>
-            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
-        </init-param>
         
         <!--위에서 지정한 ioc 컨테이너가 사용할 설정 정보를 지정한다.
             XmlWebApplicationContext인 경우 *.xml파일의 경로를 지정한다.
@@ -36,7 +32,7 @@
             @Configuration 애노테이션이 붙은 자바 클래스 이름을 지정한다-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>java100.app.AppConfig</param-value>
+            <param-value>/WEB-INF/springsetting-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

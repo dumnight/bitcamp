@@ -47,7 +47,7 @@
 <div class='form-group row'>
 <label for='date' class='col-sm-2 col-form-label'>등록일</label>
 <div class='col-sm-10'>
-<input class='form-control' readonly id='date' type='text' name='date' value='${member.createdDate}'>
+<input class='form-control' readonly id='date' type='text' name='date' value='${member.regDate}'>
 </div>
 </div>
 <div class='form-group row'>

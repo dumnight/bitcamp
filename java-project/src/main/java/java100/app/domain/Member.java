@@ -8,7 +8,7 @@ public class Member {
     protected String name;
     protected String email;
     protected String password;
-    protected Date createdDate;
+    protected Date regDate;
     
     public Member() {}
     
@@ -21,7 +21,7 @@ public class Member {
     @Override
     public String toString() {
         return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password + ", createdDate="
-                + createdDate + "]";
+                + regDate + "]";
     }
 
     public int getNo() {
@@ -32,12 +32,12 @@ public class Member {
         this.no = no;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getRegDate() {
+        return regDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
     }
 
     public String getName() {

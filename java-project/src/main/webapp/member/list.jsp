@@ -27,7 +27,7 @@
             <td>${member.no}</td>
             <td><a href='view.do?no=${member.no}'>${member.name}</a></td>
             <td>${member.email}</td>
-            <td>${member.createdDate}</td>
+            <td>${member.regDate}</td>
         </tr>
 </c:forEach>
 </tbody>

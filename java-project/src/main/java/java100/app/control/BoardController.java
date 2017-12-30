@@ -68,7 +68,11 @@ public class BoardController {
         
         Board board = boardDao.selectOne(no);
         
-        request.setAttribute("board", board);
+        if(board != null && board.getNo() == no)
+        {
+    		boardDao.viewCount(no);
+    		request.setAttribute("board", board);
+        }
         
         return "/board/view.jsp";
         
