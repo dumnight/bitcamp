@@ -8,3 +8,12 @@ footer {
 .container{
    width: 680px
 }
+
+.toolbar {
+    margin: 3px 0px;
+}
+
+.searchbox {
+    display: inline-block;
+    float: right;
+}

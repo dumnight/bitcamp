@@ -25,9 +25,37 @@
 
     <!-- select를 실행할 때 정렬 값을 입력 받기 위해 
          Map 객체를 파라미터로 받는다.  -->
-    <select id="selectList" resultMap="boardMap" parameterType="map">
+    <select id="findAll" resultMap="boardMap" parameterType="map">
         <include refid="select1"/>
         from ex_board
+
+        <if test="titles != null">
+            <where>
+                <foreach collection="titles" item="title">
+                    or title like '%${title}%'
+                </foreach>
+            </where>
+        </if>
+        
+        <!-- 정렬 조건에 따라 SQL문을 변경한다.-->
+        order by 
+        <choose>
+            <when test="orderColumn == 'regdt' and align == 'desc'">
+                regdt desc
+            </when>
+            <when test="orderColumn == 'regdt' and align == 'asc'">
+                regdt asc
+            </when>
+            <when test="orderColumn == 'vwcnt' and align == 'desc'">
+                vwcnt desc
+            </when>
+            <when test="orderColumn == 'vwcnt' and align == 'asc'">
+                vwcnt asc
+            </when>
+            <otherwise>
+                no desc
+            </otherwise>
+        </choose>
     </select>
     
     <insert id="insert" parameterType="board">
@@ -46,7 +74,7 @@
         delete from ex_board where no=#{value}
     </delete>
     
-    <select id="selectOne" resultMap="boardMap" parameterType="int">
+    <select id="findByNo" resultMap="boardMap" parameterType="int">
          <include refid="select1"/>
          , conts
         from ex_board

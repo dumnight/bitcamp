@@ -7,24 +7,53 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- DAO 객체를 자동으로 생성하려면,
+<!-- DAO 객체를 자동으로 생성하려면,    
      namespace의 값이 인터페이스 이름과 같아야 한다. -->
 <mapper namespace="java100.app.dao.ScoreDao">
 
-    <resultMap type="score" id="scoreMap">
-        <id column="no" property="no"/>
-    </resultMap>
-
     <sql id="select1">
-        select
-            no, name, kor, eng, math
-    </sql>
+     select
+        no, name, 
+            (kor + eng + math) as sum,
+            ((kor + eng + math) / 3) as aver
+    </sql> 
 
     <!-- select를 실행할 때 정렬 값을 입력 받기 위해 
          Map 객체를 파라미터로 받는다.  -->
-    <select id="selectList" resultMap="scoreMap" parameterType="map">
+    <select id="findAll" resultType="score" parameterType="map">
         <include refid="select1"/>
         from ex_score
+        
+        <if test="names != null">
+    <where>
+        <foreach collection="names" item="name">
+         or name like '${name}%'
+        </foreach>
+    </where>
+</if>
+
+    order by
+    <choose>
+        <when test="orderColumn == 'sum' and align == 'desc'">
+            sum desc
+        </when>
+        <when test="orderColumn == 'sum' and align == 'asc'">
+            sum asc
+        </when>
+        <when test="orderColumn == 'name' and align == 'desc'">
+            name desc
+        </when>
+        <otherwise>
+            name asc
+        </otherwise>
+    </choose>
+    </select>
+    
+    <select id="findByNo" resultType="score" parameterType="int">
+        <include refid="select1"/>
+            , kor, eng, math
+        from ex_score
+        where no=#{value}
     </select>
     
     <insert id="insert" parameterType="score">
@@ -45,11 +74,6 @@
         delete from ex_score where no=#{value}
     </delete>
     
-    <select id="selectOne" resultMap="scoreMap" parameterType="int">
-        <include refid="select1"/>
-        from ex_score
-        where no=#{value}
-    </select>
 </mapper>  
 
 
