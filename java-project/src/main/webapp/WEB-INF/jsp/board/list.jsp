@@ -14,17 +14,17 @@
 </head>
 <body>
 <div class='container'>
-<jsp:include page="/header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <h1>게시판 목록</h1>
 
-<div class="toolbar" style="float:right">
+<div class="toolbar">
+<a href='form' class='btn btn-primary btn-sm'>추가</a>
 <form action="list" method="get" class="searchbox">
 <input type="text" name="title">
 <button>검색</button>
 </form>
 </div>
 
-<p><a href='form' class='btn btn-primary btn-sm'>추가</a></p>
 <table class='table table-hover'>
 <thead>
 <tr>
@@ -42,8 +42,8 @@
 
 </tbody>
 </table>
-<jsp:include page="/footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 </div>
-<%@ include file="../jslib.txt" %>
+<jsp:include page="../jslib.jsp"/>
 </body>
 </html>

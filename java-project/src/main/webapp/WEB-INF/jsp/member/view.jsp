@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class='container'>
-<jsp:include page="/header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <h1>회원 상세 정보</h1>
 
 <c:if test="${not empty member}">
@@ -63,8 +63,8 @@
 </c:if>
 
 
-<jsp:include page="/footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 </div>
-<%@ include file="../jslib.txt" %>
+<jsp:include page="../jslib.jsp"/>
 </body>
 </html>

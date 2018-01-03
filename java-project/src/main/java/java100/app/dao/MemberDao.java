@@ -12,6 +12,7 @@ import java100.app.domain.Member;
 //
 public interface MemberDao {
     List<Member> findAll(Map<String,Object> params);
+    Member findByEmailAndPassword(Map<String,Object> params); //파라미터값이 한개만 넘어가기때문에 한개 이상의 값을 넘겨야 할땐 맵에 담는다
     int insert(Member member);
     int update(Member member);
     int delete(int no);
