@@ -40,6 +40,9 @@
 </c:forEach>
 </tbody>
 </table>
+
+<jsp:include page="../page.jsp"/>
+
 <jsp:include page="../footer.jsp"/>
 </div>
 <jsp:include page="../jslib.jsp"/>

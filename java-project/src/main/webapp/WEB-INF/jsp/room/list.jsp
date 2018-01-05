@@ -40,9 +40,10 @@
             <td><a href='delete?no=${room.no}' class='btn btn-danger btn-sm'>삭제</a>
         </tr> 
 </c:forEach>
-
 </tbody>
 </table>
+<jsp:include page="../page.jsp"/>
+
 <jsp:include page="../footer.jsp"/>
 </div>
 <jsp:include page="../jslib.jsp"/>

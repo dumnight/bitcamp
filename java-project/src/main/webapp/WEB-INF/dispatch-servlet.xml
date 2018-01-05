@@ -39,11 +39,11 @@
             </list>
         </property>
     </bean>
-    
+    <!-- 
     <bean id="multipartReslover"
         class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
     </bean>
-    
+     -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -55,13 +55,21 @@
 	</bean>
 	
 	<!-- 인터셉터를 등록한다. -->
+	
 	<mvc:interceptors>
 	   <mvc:interceptor>
 	       <mvc:mapping path="/**"/>
 	       <mvc:exclude-mapping path="/auth/**"/>
 	       <bean class="java100.app.web.Interceptor.AuthInterceptor"/>
-	   </mvc:interceptor>
-	</mvc:interceptors>
+	   </mvc:interceptor>  
+	</mvc:interceptors> 
+	
+	<!-- MultipartResolver 설정 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+
 	
 </beans>
 

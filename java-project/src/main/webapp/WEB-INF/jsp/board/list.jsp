@@ -28,20 +28,24 @@
 <table class='table table-hover'>
 <thead>
 <tr>
-<th>번호</th><th>제목</th><th>등록일</th><th>조회수</th>
+<th>번호</th><th>제목</th><th>등록일</th><th>조회수</th><th>작성자</th>
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${list}" var="board">
+<c:forEach items="${list}" var="board" >
         <tr>
             <td>${board.no}</td>
             <td><a href='${board.no}'>${board.title}</a></td>
             <td>${board.regDate}</td>
-            <td>${board.viewCount}</td></tr>
+            <td>${board.viewCount}</td>
+            <td>${board.writer.name}</td>
+            </tr>
 </c:forEach>
-
 </tbody>
 </table>
+
+<jsp:include page="../page.jsp"/>
+
 <jsp:include page="../footer.jsp"/>
 </div>
 <jsp:include page="../jslib.jsp"/>

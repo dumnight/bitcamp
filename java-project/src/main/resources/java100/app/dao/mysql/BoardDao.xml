@@ -13,9 +13,15 @@
 
     <resultMap type="board" id="boardMap">
         <id column="no" property="no"/>
+        <result column="title" property="title"/>
         <result column="conts" property="content"/>
         <result column="regdt" property="regDate"/>
         <result column="vwcnt" property="viewCount"/>
+        <!-- 게시글 작성자 정보를 담을 수 있도록 설정한다. -->
+        <association property="writer" javaType="member">
+            <id column="m_no" property="no"/>
+            <result column="m_name" property="name"/>
+        </association>
     </resultMap>
 
     <sql id="select1">
@@ -26,8 +32,14 @@
     <!-- select를 실행할 때 정렬 값을 입력 받기 위해 
          Map 객체를 파라미터로 받는다.  -->
     <select id="findAll" resultMap="boardMap" parameterType="map">
-        <include refid="select1"/>
-        from ex_board
+        select
+            b.no,
+            b.title,
+            b.regdt,
+            b.vwcnt,
+            m.no as m_no,
+            m.name as m_name
+        from ex_board as b join ex_memb as m on b.mno=m.no
 
         <if test="titles != null">
             <where>
@@ -56,12 +68,18 @@
                 no desc
             </otherwise>
         </choose>
+        
+        limit #{startIndex}, #{size}
     </select>
     
     <insert id="insert" parameterType="board">
-        insert into ex_board(title,conts,regdt)
-        values(#{title},#{content},now())
+        insert into ex_board(title,conts,regdt,mno)
+        values(#{title},#{content},now(),#{writer.no})
     </insert>
+    
+    <select id="countAll" resultType="int">
+        select count(*) from ex_board
+    </select>
     
     <update id="update" parameterType="board">
         update ex_board set 

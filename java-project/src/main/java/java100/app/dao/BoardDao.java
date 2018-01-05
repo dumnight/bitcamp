@@ -16,6 +16,7 @@ public interface BoardDao {
     int delete(int no);
     Board findByNo(int no);
     int viewCount(int no);
+    int countAll();
 }
 
 

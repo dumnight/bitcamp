@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import java100.app.dao.MemberDao;
 import java100.app.domain.Member;
+import java100.app.service.MemberService;
 
 @Controller
 @RequestMapping("/auth")
 @SessionAttributes("loginUser")
 public class LoginController {
     
-    @Autowired MemberDao memberDao;
+    @Autowired MemberService memberService;
     
     @RequestMapping(value="login", method=RequestMethod.GET)
     public String form(Model model) {
@@ -38,7 +38,7 @@ public class LoginController {
         params.put("email", email);
         params.put("password", password);
         
-        Member member = memberDao.findByEmailAndPassword(params);
+        Member member = memberService.findByEmailAndPassword(params);
         
         if(saveEmail != null) {
             Cookie cookie = new Cookie("email", email);

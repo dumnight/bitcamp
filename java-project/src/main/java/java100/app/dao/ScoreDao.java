@@ -16,6 +16,7 @@ public interface ScoreDao {
     int update(Score score);
     int delete(int no);
     Score findByNo(int no);
+    int countAll();
 }
 
 

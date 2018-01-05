@@ -47,6 +47,9 @@
             name asc
         </otherwise>
     </choose>
+    
+    <!-- 페이징 처리  -->
+    limit #{startIndex}, #{size}
     </select>
     
     <select id="findByNo" resultType="score" parameterType="int">
@@ -54,6 +57,10 @@
             , kor, eng, math
         from ex_score
         where no=#{value}
+    </select>
+    
+     <select id="countAll" resultType="int">
+        select count(*) from ex_score
     </select>
     
     <insert id="insert" parameterType="score">

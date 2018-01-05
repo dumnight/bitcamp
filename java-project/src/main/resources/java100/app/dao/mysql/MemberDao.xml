@@ -65,7 +65,7 @@
                 name asc
             </otherwise>
         </choose>
-        
+        limit #{startIndex}, #{size}
     </select>
     
     <insert id="insert" parameterType="member">
@@ -84,6 +84,10 @@
     <delete id="delete" parameterType="int">
         delete from ex_memb where no=#{value}
     </delete>
+    
+    <select id="countAll" resultType="int">
+        select count(*) from ex_memb
+    </select>
     
     <select id="findByNo" resultMap="memberMap" parameterType="int">
        <include refid="select1"/> 
