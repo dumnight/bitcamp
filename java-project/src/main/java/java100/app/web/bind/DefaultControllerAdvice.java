@@ -18,7 +18,7 @@ public class DefaultControllerAdvice implements WebBindingInitializer{
 
     @InitBinder // 요청 핸들러가 호출되기 전에 먼저 실행된다.
     public void initBinder(WebDataBinder binder) {
-        System.out.println("WebBindingInitializer InitBinder()");
+        //System.out.println("WebBindingInitializer InitBinder()");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false); 
         binder.registerCustomEditor(Date.class,           
