@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JdbcTestMapper.xml 파일 => "jdbc_test" 테이블을 다루는 SQL문이 들어 있다. -->
+  
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- DAO 객체를 자동으로 생성하려면, namespace의 값이 인터페이스 이름과 같아야 한다. -->
+<mapper namespace="java100.app.dao.BookDao">
+
+	<resultMap type="book" id="bookMap">
+		<id column="no" property="no" />
+		<result column="title" property="title" />
+		<result column="conts" property="conts" />
+		<result column="publisher" property="publisher" />
+		<result column="pubdt" property="pubdt" />
+		<result column="price" property="price" />
+		<!-- 게시글 작성자 정보를 담을 수 있도록 설정한다. 
+		<association property="writer" javaType="member">
+			<id column="m_no" property="no" />
+			<result column="m_name" property="name" />
+		</association> -->
+		<!-- 첨부파일 정보를 담을 수 있도록 설정한다 -->
+		<collection property="files" ofType="uploadFile">
+		  <id column="f_no" property="no"/>
+		  <result column="filename" property="filename"/>
+		</collection>
+		
+	</resultMap>
+
+	<sql id="select1">
+		select
+		no, title, publisher, price
+	</sql>
+
+	<!-- select를 실행할 때 정렬 값을 입력 받기 위해 Map 객체를 파라미터로 받는다. -->
+	<select id="findAll" resultMap="bookMap" parameterType="map">
+		select b.no, b.title, b.publisher, b.price, 
+               f.no as f_no, f.filename
+        from ex_book as b
+             left join ex_file2 as f on b.no=f.no
+
+         <if test="titles != null">
+            <where>
+                <foreach collection="titles" item="title">
+                    or name like '%${title}%'
+                </foreach>
+            </where>
+        </if>
+        
+		<!-- 정렬 조건에 따라 SQL문을 변경한다. -->
+		order by
+		<choose>
+			<when test="orderColumn == 'regdt' and align == 'desc'">
+				regdt desc
+			</when>
+			<when test="orderColumn == 'regdt' and align == 'asc'">
+				regdt asc
+			</when>
+			<when test="orderColumn == 'vwcnt' and align == 'desc'">
+				vwcnt desc
+			</when>
+			<when test="orderColumn == 'vwcnt' and align == 'asc'">
+				vwcnt asc
+			</when>
+			<otherwise>
+				no desc
+			</otherwise>
+		</choose>
+
+		limit #{startIndex}, #{size}
+	</select>
+
+	<!-- insert를 수행한 후 자동 증가된 PK 값을 받고 싶다면 useGeneratedKeys속성 값을 true로 설정해야 
+		한다 또한 PK 컬럼과 그 PK 컬럼 값을 저장할 property 이름을 알려줘야 한다 -->
+	<insert id="insert" parameterType="book" useGeneratedKeys="true"
+        keyColumn="no" keyProperty="no">
+		insert into ex_book(title,publisher,pubdt,price,conts)
+		values(#{title},#{publisher},#{pubdt},#{price},#{conts})
+	</insert>
+
+    <select id="countAll" resultType="int">
+		select count(*) from ex_book  
+	</select> 
+
+	<update id="update" parameterType="book">
+		update ex_book set
+		title=#{title},
+		conts=#{conts},
+		publisher=#{publisher},
+		pubdt=#{pubdt},
+		price=#{price}
+		where no=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from ex_book where no=#{value}
+	</delete>
+
+	<select id="findByNo" resultMap="bookMap" parameterType="int">
+		select no, title, publisher, pubdt, price, conts
+		from ex_book
+		where no=#{value}
+	</select>
+
+    
+	<select id="findByNo2" resultMap="bookMap" parameterType="int">
+		select b.no, b.title, b.publisher, b.price, 
+		       f.no as f_no, f.filename
+		from ex_book as b
+		     left join ex_file2 as f on b.no=f.no
+		where b.no=#{value}
+	</select>
+ 
+</mapper>  
+
+
+
+
+
+
+
+
+
