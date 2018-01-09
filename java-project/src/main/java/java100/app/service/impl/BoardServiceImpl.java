@@ -51,17 +51,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    //@Transactional(propagation=Propagation.NEVER)
     public int add(Board board) {
         //insert를 하기전에는 board의 no 프로퍼티 값은 0이다.
         //insert를 한 후에는 no 프로퍼티에 db에서 생성한 값이 저장된다.
         int count = boardDao.insert(board);
-        List<UploadFile> files = board.getFiles();
         
-        for (UploadFile file : files) {
-            //파일 정보를 insert 하기 전에 게시물 no를 설정한다.
-            //file.setBoardNo(board.getNo());
-            fileDao.insert(file);
-        }
+        this.addFiles(board.getFiles(), board.getNo());
         
         return count;
     }
@@ -73,13 +69,7 @@ public class BoardServiceImpl implements BoardService {
        //기존의 게시물 첨부파일을 모두 지운다.
        fileDao.deleteAllByBoardNo(board.getNo());
        //다시 게시물 첨부파일을 저장한다.
-       List<UploadFile> files = board.getFiles();
-       
-       for (UploadFile file : files) {
-           //파일 정보를 insert 하기 전에 
-           file.setBoardNo(board.getNo());
-           fileDao.insert(file);
-       }
+       addFiles(board.getFiles(), board.getNo());
 
        return count;
     }
@@ -98,6 +88,16 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int viewCount(int no) {
         return boardDao.viewCount(no);
+    }
+    
+    //@Transactional
+    @Override
+    public void addFiles(List<UploadFile> files, int boardNo) {
+        for (UploadFile file : files) {
+            
+            file.setBoardNo(boardNo);
+            fileDao.insert(file);
+        }
     }
     
 }

@@ -73,6 +73,7 @@ public class BoardController {
         return "board/form";
         
     }
+    //@Transactional
     @RequestMapping("add")
     public String add(Board board, MultipartFile[] file,
             @ModelAttribute(value="loginUser") Member loginUser) throws Exception {
@@ -101,7 +102,11 @@ public class BoardController {
         //board.setWriter(writer);
         
         board.setWriter(loginUser);
+        //게시글 등록
         boardService.add(board);
+        //첨부파일 등록
+       
+        
         return "redirect:list";
         
     }
