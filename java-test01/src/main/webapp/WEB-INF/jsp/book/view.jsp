@@ -1,4 +1,3 @@
-<%@page import="java100.app.domain.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
@@ -60,7 +59,7 @@
 <label class='col-sm-2 col-form-label'>사진</label>
 <div class='col-sm-10'>
     <c:forEach items="${book.files}" var="file">
-        <img src="${contextPath}/download/${file.filename}"><br>
+        <img src="${contextPath}/download/${file.filename}" width="200" height="170"><br>
     </c:forEach>
 </div>
 </div>

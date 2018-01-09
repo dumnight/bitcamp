@@ -38,7 +38,7 @@
 		select b.no, b.title, b.publisher, b.price, 
                f.no as f_no, f.filename
         from ex_book as b
-             left join ex_file2 as f on b.no=f.no
+             left join ex_file2 as f on b.no=f.fno
 
          <if test="titles != null">
             <where>

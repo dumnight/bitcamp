@@ -35,17 +35,17 @@ alter table ex_file2
 alter table ex_file2
     modify column no int not null auto_increment;
     
-alter table ex_file2
-    add constraint foreign key (fno) references ex_book(no);
-    
-    
-    /* ex_file 테이블에 Cascade 기능을 적용하기 */
-/* => 먼저 foreign key에 대한 constraint 이름을 알아낸다.*/
-show create table ex_file2;
-
-/* => 기존의 등록된 외부키 constraint를 제거한다. */
-alter table ex_file2
-  drop foreign key ex_file2_ibfk_1;
+--alter table ex_file2
+--    add constraint foreign key (fno) references ex_book(no);
+--    
+--    
+--    /* ex_file 테이블에 Cascade 기능을 적용하기 */
+--/* => 먼저 foreign key에 대한 constraint 이름을 알아낸다.*/
+--show create table ex_file2;
+--
+--/* => 기존의 등록된 외부키 constraint를 제거한다. */
+--alter table ex_file2
+--  drop foreign key ex_file2_ibfk_1;
 
 alter table ex_file2
   add constraint foreign key (fno) references ex_book(no) on delete cascade;
