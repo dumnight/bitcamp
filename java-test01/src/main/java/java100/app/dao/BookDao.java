@@ -11,7 +11,7 @@ public interface BookDao {
     int update(Book book);
     int delete(int no);
     Book findByNo(int no);
-    Book findByNo2(int no);
+    List<Book> findByTitle(Map<String,Object> params);
     int countAll();
 }
 

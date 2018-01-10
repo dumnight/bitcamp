@@ -25,8 +25,6 @@ BookStore
 <li class='nav-item'>
 <a class='nav-link disabled' href='../book/list'>도서</a>
 </li>
-<li class='nav-item'>
-<a class='nav-link disabled' href='../board/list'>게시판</a>
 </ul>
 
 <!-- <c:choose>

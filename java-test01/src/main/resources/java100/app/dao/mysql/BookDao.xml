@@ -96,7 +96,7 @@
 	<delete id="delete" parameterType="int">
 		delete from ex_book where no=#{value}
 	</delete>
-
+    
 	<select id="findByNo" resultMap="bookMap" parameterType="int">
 		select no, title, publisher, pubdt, price, conts
 		from ex_book
@@ -104,13 +104,13 @@
 	</select>
 
     
-	<select id="findByNo2" resultMap="bookMap" parameterType="int">
-		select b.no, b.title, b.publisher, b.price, 
-		       f.no as f_no, f.filename
-		from ex_book as b
-		     left join ex_file2 as f on b.no=f.no
-		where b.no=#{value}
-	</select>
+	<select id="findByTitle" resultMap="bookMap" parameterType="map">
+		select * from ex_book where name like '%${title}';
+	</select> 
+	
+
+	
+	
  
 </mapper>  
 

@@ -17,10 +17,11 @@
 <jsp:include page="../header.jsp"/>
 <h1>도서 목록</h1>
 
+
 <div class="toolbar">
 <a href='form' class='btn btn-primary btn-sm'>추가</a>
 <form action="list" method="get" class="searchbox">
-<input type="text" name="title">
+<input type="search" id="findByTitle" name="findByTitle">
 <button>검색</button>
 </form>
 </div>
