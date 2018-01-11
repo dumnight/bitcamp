@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>CSS3 Property Basic</title>
     <style>
         input[type=checkbox]:checked + div {
             height: 0px;
         }
         div {
+            border: 1px solid red;
             overflow: hidden;
             width: 650px; height: 300px;
 
@@ -15,13 +17,22 @@
             -webkit-transition-duration: 1s;
             -moz-transition-duration: 1s;
             -o-transition-duration: 1s;
-            transition-duration: 1s;
+            transition-duration: 10s;
         }
     </style>
 </head>
 <body>
-    <div>
+    <button id="btn1">접기</button>
+    <div id="d1">
         <h1>Lorem ipsum dolor amet</h1>
     </div>
+    <script>
+    var d1 = document.getElementById('d1');
+    var btn = document.getElementById('btn1');
+    
+    btn.onclick = function() {
+    	d1.style['background-color'] = 'red';
+    }
+    </script>
 </body>
 </html>
