@@ -21,7 +21,7 @@
 <div class="toolbar">
 <a href='form' class='btn btn-primary btn-sm'>추가</a>
 <form action="list" method="get" class="searchbox">
-<input type="search" id="findByTitle" name="findByTitle">
+<input type="search" id="title" name="title">
 <button>검색</button>
 </form>
 </div>

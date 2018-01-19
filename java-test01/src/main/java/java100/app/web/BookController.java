@@ -30,9 +30,9 @@ public class BookController {
     @RequestMapping("list")
     public String list(@RequestParam(value="pn", defaultValue="1") int pageNo,
             @RequestParam(value="ps", defaultValue="5") int pageSize,
-            @RequestParam(value="nm", required=false) String[] names, 
+            @RequestParam(value="title", required=false) String[] titles, 
             @RequestParam(value="ol", required=false) String orderColumn, 
-            @RequestParam(value="al", required=false) String alignColumn,   
+            @RequestParam(value="al", required=false) String alignColumn,
             Model model) throws Exception {
         
         //UI와 제어와 관련된 코드는 pageContoller에 두어야 한다
@@ -45,7 +45,7 @@ public class BookController {
         }
         
         HashMap<String,Object> options = new HashMap<>();
-        options.put("names", names);
+        options.put("titles", titles);
         options.put("orderColumn", orderColumn);
         options.put("alignColumn", alignColumn);
         

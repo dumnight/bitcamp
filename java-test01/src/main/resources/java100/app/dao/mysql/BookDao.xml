@@ -43,7 +43,7 @@
          <if test="titles != null">
             <where>
                 <foreach collection="titles" item="title">
-                    or name like '%${title}%'
+                    or b.title like '%${title}%'
                 </foreach>
             </where>
         </if>
