@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원관리</title>
+<link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='../css/common.css'>
+</head>
+<body>
+<div class='container'>
+<header>
+<nav class='navbar navbar-expand-lg navbar-light bg-light'>
+<a class='navbar-brand' href='../index.html'>
+<img src='/java-project/images/bootstrap-solid.svg' width='30' height='30' class='d-inline-block align-top' alt=''>
+Bitcamp
+</a>
+
+<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<div class='collapse navbar-collapse' id='navbarNav'>
+<ul class='navbar-nav mr-auto'>
+<li class='nav-item'>
+<a class='nav-link disabled' href='../score/list.html'>성적</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link disabled' href='../member/list.html'>회원</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link disabled' href='../board/list.html'>게시판</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link disabled' href='../room/list.html'>강의실</a>
+</li>
+</ul>
+
+김<a href="/java-project/app/auth/logout"
+        class='btn btn-light btn-sm'>로그아웃</a>
+    </div>
+</nav>
+</header>
+<h1>회원 목록</h1>
+
+<nav class="navbar navbar-light justify-content-between">
+<a href='form.html' class='btn btn-primary btn-sm'>추가</a>
+<form class="form-inline">
+<input id="words" name="words"
+           class="form-control form-control-sm mr-sm-2" type="search" 
+           placeholder="검색" aria-label="Search">
+ <button id="searchBtn" class="btn btn-sm btn-outline-success my-2 my-sm-0" 
+            type="button">Search</button>
+</form>
+</nav>
+
+<table id="list" class='table table-hover'>
+<thead>
+<tr>
+<th>번호</th><th>이름</th><th>이메일</th><th>등록일</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled"><a class="page-link" tabindex="-1">이전</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item disabled"><a class="page-link" tabindex="-1">다음</a></li>
+  </ul>
+</nav>
+
+<footer>
+비트캠프 자바100기@2017
+</footer>
+</div>
+<script src='/java-project/node_modules/jquery/dist/jquery.slim.min.js'></script>
+<script src='/java-project/node_modules/popper.js/dist/umd/popper.min.js'></script>
+<script src='/java-project/node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<script type="text/javascript">
+
+load();
+
+function getTimestampToDate(timestamp){
+    var result = JSON.parse(xhr.responseText);
+    var date = new Date(timestamp*1000);
+    var chgTimestamp = date.getFullYear().toString()
+    +addZero(date.getMonth()+1)
+    +addZero(date.getDate().toString())
+    +addZero(date.getHours().toString())
+    +addZero(date.getMinutes().toString())
+    +addZero(date.getSeconds().toString());
+    return chgTimestamp;
+    }
+function addZero(data){
+    return (data<10) ? "0"+data : data;
+    }
+
+
+
+function load(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        
+        if (xhr.status != 200) {
+            window.alert('서버 실행 오류!');
+            return;
+        }
+        
+        var tbody = document.querySelector('#list > tbody');
+        var result = JSON.parse(xhr.responseText);
+        
+        tbody.innerHTML = "";
+        
+        for(var data of result.list) {
+            var tr = document.createElement('tr');
+            tr.innerHTML = 
+                "<td>" + data.no + "</td>" +
+                "<td><a href='form.html?no=" + data.no +"'>" + data.name + "</a></td>" +
+                "<td>" + data.email + "</td>" +
+                "<td>" + data.regDate + "</td>";
+                tbody.appendChild(tr);
+        }
+    };
+    
+    xhr.open('GET', '../json/member/list?', true);
+    xhr.send(); 
+            
+}
+
+
+</script>
+
+</body>
+</html>

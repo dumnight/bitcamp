@@ -22,7 +22,7 @@ public class ScoreController {
     @RequestMapping("list")
     public Object list(@RequestParam(value="pn", defaultValue="1") int pageNo,
             @RequestParam(value="ps", defaultValue="5") int pageSize,
-            @RequestParam(value="nm", required=false) String[] names, 
+            @RequestParam(value="words", required=false) String[] names, 
             @RequestParam(value="ol", required=false) String orderColumn, 
             @RequestParam(value="al", required=false) String alignColumn) throws Exception {
         
@@ -35,7 +35,7 @@ public class ScoreController {
         }
         
         HashMap<String,Object> options = new HashMap<>();
-        options.put("names", names);
+        options.put("words", names);
         options.put("orderColumn", orderColumn);
         options.put("alignColumn", alignColumn);
         
