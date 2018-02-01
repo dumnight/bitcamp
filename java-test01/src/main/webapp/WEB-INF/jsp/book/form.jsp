@@ -13,6 +13,21 @@
 <body>
 <div class='container'>
 <jsp:include page="../header.jsp"/>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+<input style="width:200px; margin: 0" id='bank' type='date' class="form-control" placeholder="시작일" name='bank'>
+
+<input id='bank' type='date' class="form-control" placeholder="시작일" name='bank'>
+
+
 <h1>새 도서 등록</h1>
 <form action='add' method='post' enctype="multipart/form-data">
 <div class='form-group row'>

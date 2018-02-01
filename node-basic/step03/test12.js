@@ -1,15 +1,30 @@
 "use strict"
+//객체 - prototype 1
 
+//생성자로 초기화된 객체들이 공유하는 저장소
 
+//prototype 사용전
 
-var prompt = require('prompt');
+function Calculator() {
+    //모든 생성자 역할을 하는 함수는 상위 prototype이 Object()이다.
+    //모든 생성자의 최상위 생성자는 Object()이다.
+    //이 생성자가 호출되기 전에 먼저 Object()가 호출된다는 의미이다.
+    this.result = 0;
+    this.plus = function(value) {
+        this.result += value;
+    };
+    this.minus = function(value) {
+        this.result -= value;
+    };
+}
 
-prompt.start();
+//객체 생성 과정
+//빈 객체 생성
+//Object() 함수가 호출되어 기본 프로퍼티가 추가된다
+//Caclulator() 함수가 호출되어 기타 프로퍼티가 추가된다.
+var c1 = new Calculator();
 
-prompt.get(['name', 'tel'], function(err, result) {
-  console.log('입력결과:');
-  console.log('이름=', result.name)
-  console.log('번호=', result.tel)
-  
-})
-
+c1.plus(10);
+c1.plus(20);
+c1.minus(7);
+console.log(c1.result);

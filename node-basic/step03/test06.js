@@ -40,7 +40,7 @@ if (obj.plus) {
 }
 
 if (obj.minus) {
-    obj.minus(30, 20)
+    obj.minus(10, 20)
 }
 
 

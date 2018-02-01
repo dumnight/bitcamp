@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>안녕</h1>
+<script type="text/javascript">
+console.log("1111111111");
+window.alarm("okok");
+
+//위의 코드에서 예외가 발생하면 즉시 스크립트 태그를 나간다.
+//따라서 예외가 발생한 코드의 다음 줄부터는 실행되지 않는다.
+//물론 이 태그만 싫행하지 않는다는것이지 다음 스크립트 태그는 그대로 실행한다.
+console.log("22222222222");
+</script>
+
+<script type="text/javascript">
+console.log("333333333")
+</script>
+
+</body>
+</html>
