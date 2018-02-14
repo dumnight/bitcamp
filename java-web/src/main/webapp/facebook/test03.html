@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>페이스북 로그인</h1>
+
+<script id="s1" type="text/javascript"></script>
+<script id="s2" type="text/javascript"></script>
+<script id="s3" type="text/javascript"></script>
+<script id="s4" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//페이스북 자바스크립트 sdk 파일을 가져온 후에 호출될 함수를 등록한다.
+//sdk.js 파일을 실행할 때 이 함수를 찾아 호출한다.
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1658829817493258',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.12' // use graph api version 2.8
+    });
+};
+
+
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+</script>
+
+</body>
+</html>

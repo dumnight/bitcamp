@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>페이스북 로그인</h1>
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<script type="text/javascript">
+//페이스북으로 부터 사용자 정보 가져오기
+function autoServerLogin(accessToken) {
+    location.href = "login09.jsp?accessToken" + accessToken;    
+}
+
+  function statusChangeCallback(response) {
+    console.log(response);
+
+    if (response.status === 'connected') { //로그인이 정상적으로 되었을 때,
+        autoServerLogin(response.authResponse.accessToken);
+    } else { //로그인이 되지 않았을 때
+        console.log("로그인 되지 않았음");
+    }
+  }
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) { 
+        statusChangeCallback(response);
+      });
+}
+
+
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1658829817493258',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.12' // use graph api version 2.8
+    });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+</script>
+
+</body>
+</html>

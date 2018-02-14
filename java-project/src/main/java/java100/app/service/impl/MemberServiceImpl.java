@@ -59,5 +59,10 @@ public class MemberServiceImpl implements MemberService {
     public Member findByEmailAndPassword(Map<String, Object> params) {
         return memberDao.findByEmailAndPassword(params);
     }
+
+    @Override
+    public Member get(String email) {
+        return memberDao.findByEmail(email);
+    }
     
 }

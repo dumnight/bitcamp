@@ -82,23 +82,6 @@ Bitcamp
 
 load();
 
-function getTimestampToDate(timestamp){
-    var result = JSON.parse(xhr.responseText);
-    var date = new Date(timestamp*1000);
-    var chgTimestamp = date.getFullYear().toString()
-    +addZero(date.getMonth()+1)
-    +addZero(date.getDate().toString())
-    +addZero(date.getHours().toString())
-    +addZero(date.getMinutes().toString())
-    +addZero(date.getSeconds().toString());
-    return chgTimestamp;
-    }
-function addZero(data){
-    return (data<10) ? "0"+data : data;
-    }
-
-
-
 function load(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -116,11 +99,13 @@ function load(){
         
         for(var data of result.list) {
             var tr = document.createElement('tr');
+            var date = new Date(data.regDate);
+            
             tr.innerHTML = 
                 "<td>" + data.no + "</td>" +
                 "<td><a href='form.html?no=" + data.no +"'>" + data.name + "</a></td>" +
                 "<td>" + data.email + "</td>" +
-                "<td>" + data.regDate + "</td>";
+                "<td>" + date.tolocaletimestring + "</td>";
                 tbody.appendChild(tr);
         }
     };
